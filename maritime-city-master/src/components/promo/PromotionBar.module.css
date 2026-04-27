@@ -1,0 +1,32 @@
+.bar{
+  width: 100%;
+  background: #b39680; /* ✅ clean red */
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 42px;
+  padding: 0 12px;
+
+  font-weight: 700;
+  font-size: 14px;
+
+  position: sticky;   /* stays on top */
+  top: 0;
+  z-index: 9999;
+}
+
+.text{
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* mobile */
+@media (max-width: 640px){
+  .bar{
+    height: 38px;
+    font-size: 12px;
+  }
+}

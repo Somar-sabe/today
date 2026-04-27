@@ -1,0 +1,60 @@
+ul li {
+    width: max-content;
+}
+
+.sections {
+  padding: 2rem 1rem;
+  background-color: #fdfdfd;
+}
+
+.titles {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.keyInfo {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+     display: flex;
+     gap: 20vw;
+}
+
+.itemt {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.labelt {
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tooltip svg {
+  width: 18px;
+  height: 18px;
+  color: #888;
+}
+
+.valuet {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.buttont {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: #0066cc;
+  cursor: pointer;
+  text-align: left;
+}

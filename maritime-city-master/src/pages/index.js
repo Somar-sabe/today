@@ -1,0 +1,385 @@
+'use client'
+
+import React, { useState } from 'react'
+import ProjectsList from '@/components/projectsList'
+import { LayoutOne } from '@/layouts'
+import ContactFormModal from '@/components/contactModule/contactFormModule'
+import Lead from '@/components/contactnew/LeadFormCard'
+import Interest from '@/components/intrest/intrest'
+
+export default function Home() {
+  const [open, setOpen] = useState(true)
+
+  return (
+    <main className="p-6 sm:p-10 bg-gray-50 min-h-screen">
+              <ContactFormModal
+          isOpen={open}
+          setOpen={setOpen}
+          ContactType="HomepagePopup"
+          title="Get a callback in 1 minute"
+          onSuccess={() => setOpen(false)}
+        />
+
+      <LayoutOne topbar>
+        <ProjectsList />
+
+        <ContactFormModal
+          isOpen={open}
+          setOpen={setOpen}
+          ContactType="HomepagePopup"
+          title="Get a callback in 1 minute"
+          onSuccess={() => setOpen(false)}
+        />
+
+        <div className="responsive-container som">
+          <Interest />
+          <Lead />
+        </div>
+      </LayoutOne>
+
+      <style jsx>{`
+      .som{  padding: 42px 0 70px;
+  background:
+    radial-gradient(900px 500px at 20% 0%, rgba(201,169,110,0.10), transparent 60%),
+    radial-gradient(900px 500px at 80% 10%, rgba(15,23,42,0.06), transparent 55%),
+    #f7f4ef; }
+        .responsive-container {
+          display: flex;
+          justify-content: space-around;
+          gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+          .responsive-container {
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+      `}</style>
+             <style jsx>{`
+.choiceActive .radioDot {
+  background: #bc986b;
+  border-color: #bc986b;
+  box-shadow: 0 0 0 3px rgba(15,23,42,0.15);
+}
+
+.cfmOverlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,.55);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+  z-index: 99999999999999999999999999999;
+  padding: 18px;
+}
+
+.cfmModal{
+  width: min(980px, 96vw);
+  background: #fff;
+  border: 1px solid rgba(15,23,42,0.10);
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.20);
+  position: relative;
+  overflow: hidden;
+}
+
+.cfmClose{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+  z-index: 2;
+}
+
+.cfmContent{
+  padding: 44px 44px 20px;
+  min-height: 520px;
+}
+
+.cfmTitle{
+  margin: 0 0 18px;
+  font-size: 34px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.grid2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.choice{
+  height: 54px;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: #fff;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  cursor: pointer;
+}
+
+.choiceCard{
+  border: 1px solid rgba(15,23,42,0.12);
+  background: #fff;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  height: 88px;
+}
+
+.choiceImg{
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+}
+
+.choiceRight{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+}
+
+.choiceCheck{
+  height: 54px;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: #fff;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  cursor: pointer;
+}
+
+.choiceText{
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.radioWrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+}
+
+.radioInput{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+/* your existing dot */
+.radioDot{
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,0.35);
+  background: #fff;
+}
+
+/* when input is checked, color the dot */
+.radioInput:checked + .radioDot{
+  border-color: #0f172a;
+  background: #0f172a;
+  box-shadow: 0 0 0 3px rgba(15,23,42,0.15);
+}
+
+.checkBox{
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(15,23,42,0.35);
+  background: #fff;
+}
+
+.choiceActive{
+  outline: 2px solid rgba(176, 146, 120, 0.65);
+  border-color: rgba(176, 146, 120, 0.65);
+}
+
+.scrollBox{
+  max-height: 420px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.cfmForm{
+  display: grid;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.cfmField label{
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.cfmField input{
+  width: 100%;
+  height: 46px;
+  border-radius: 6px;
+  border: 1px solid rgba(15,23,42,0.15);
+  padding: 0 12px;
+  outline: none;
+  font-weight: 600;
+}
+
+.cfmField input:focus{
+  border-color: rgba(176, 146, 120, 0.65);
+  box-shadow: 0 0 0 4px rgba(176,146,120,0.15);
+}
+
+.cfmPhoneWrap{ width: 100%; }
+.cfmPhoneInput{
+  width: 100% !important;
+  height: 46px !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(15,23,42,0.15) !important;
+  padding-left: 52px !important;
+  font-weight: 600 !important;
+}
+.cfmPhoneBtn{
+  border-radius: 6px 0 0 6px !important;
+  border: 1px solid rgba(15,23,42,0.15) !important;
+  background: #fff !important;
+}
+
+.cfmSubmit{
+  height: 52px;
+  border-radius: 6px;
+  border: none;
+  background: rgb(176, 146, 120);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.footer{
+  border-top: 1px solid rgba(15,23,42,0.10);
+  padding: 14px 18px;
+  display: grid;
+  grid-template-columns: 120px 1fr 160px;
+  align-items: center;
+  gap: 12px;
+}
+
+.doneLabel{
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(15,23,42,0.75);
+}
+
+.progressTrack{
+  height: 6px;
+  background: rgba(15,23,42,0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill{
+  height: 100%;
+  background: rgb(176, 146, 120);
+  width: 0%;
+}
+
+.footerBtns{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.backBtn{
+  width: 44px;
+  height: 38px;
+  border-radius: 2px;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: #fff;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.nextBtn{
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 2px;
+  border: none;
+  background: rgb(176, 146, 120);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@media (max-width: 820px){
+  .cfmContent{ padding: 28px 18px 18px; }
+  .cfmTitle{ font-size: 22px; }
+  .grid2{ grid-template-columns: 1fr; }
+  .cfmModal{ width: min(720px, 96vw); }
+  .footer{ grid-template-columns: 90px 1fr 140px; }
+}
+.checkBox{
+  width: 14px;
+  height: 14px;
+  border-radius: 999px; /* ✅ make it circle */
+  border: 1px solid rgba(15,23,42,0.35);
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* ✅ color it when selected */
+.choiceActive .checkBox{
+  background: #bc986b;
+  border-color: #bc986b;
+  box-shadow: 0 0 0 3px rgba(15,23,42,0.15);
+}
+@media (max-width: 820px){
+  .cfmOverlay{ padding: 12px; }
+  .cfmModal{ width: min(720px, 96vw); max-height: 90vh; }
+
+  .cfmContent{ padding: 26px 16px 14px; min-height: 360px; }
+  .cfmTitle{ font-size: 22px; margin-bottom: 14px; }
+
+  .grid2{ grid-template-columns: 1fr; }
+
+  .scrollBox{ max-height: 46vh; }
+
+  .footer{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .footerBtns{ justify-content: space-between; }
+}
+
+@media (max-width: 420px){
+  .cfmTitle{ font-size: 20px; }
+  .choice, .choiceCheck{ height: 52px; padding: 0 14px; }
+  .choiceCard{ grid-template-columns: 78px 1fr; height: 78px; }
+  .choiceImg{ width: 78px; height: 78px; }
+}
+
+
+
+
+   `}</style>
+    </main>
+  )
+}
