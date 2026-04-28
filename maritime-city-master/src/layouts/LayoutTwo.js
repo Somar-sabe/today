@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 import { HeaderTwo } from "@/components/header";
-import Footer from "@/components/footer/footerAr";
+import FooterAr from "@/components/footer/footerar";
 import ScrollToTop from "@/components/scroll-to-top-ar";
 
 const LayoutOne = ({ children, navPositionClass, topbar }) => {
