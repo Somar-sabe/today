@@ -10,7 +10,7 @@ import HeroSectionStyleOnear from "@/components/hero/threeStyle";
 import HeroSectionStyleFiveFa from "@/components/hero/stylefiveir";
 import Interestar from "@/components/intrest/intrestar";
 import AboutUsStyleOneFa from "@/components/aboutUs/aboutusgallir";
-import ContactFormIr from "@/components/contactFormJltIr/contactFormjltIr";
+import ContactFormIr from "@/components/contactFormIr/contactFormIr";
 import CounterUpar from "@/components/counterUpIr";
 import featuresData from "@/data/service";
 import Gallery from "@/components/gallery/galleryjlt";
