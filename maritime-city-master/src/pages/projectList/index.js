@@ -1,7 +1,7 @@
 // pages/projectList/index.js
 
 import HeaderSix from '@/components/header/headerSix';
-import ProjectsList from '@/components/projectList';
+import ProjectsList from '@/components/projectsList';
 import ContactFormModal from '@/components/contactModule/contactFormModule';
 export default function ProjectsPage() {
   const toggleClassNameInBody = () => {};
