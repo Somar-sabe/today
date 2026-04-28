@@ -12,7 +12,7 @@ import OasisHero from "@/components/emaa/five";
 import PropertiesForSale from "@/components/emaa/sex";
 import OasisAmenities from "@/components/emaa/seven";
 import Interest from "@/components/intrest/intrest";
-import DubaiLandingSection from "@/components/new-ghanem/first";
+import DubaiLandingSection from "@/components/dubai-market-facts/first";
 import ContactForm from "@/components/contactForm/contactForm";
 import featuresData from "@/data/service";
 import LocationSection from "@/components/emaa/eight";
@@ -174,7 +174,10 @@ function MaritimeCity(props) {
     }
   }
 `}</style>
-
+   <div className="responsive-container som">
+          <Interest />
+          <Lead />
+        </div>
       </LayoutOne>
     </>
   );
