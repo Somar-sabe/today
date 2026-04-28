@@ -23,7 +23,7 @@ const AboutEmaarOasis = () => {
         >
           <div className="elementor-widget-container">
             <span className="elementor-heading-title elementor-size-default">
-              About Emaar The Oasis
+              About  Emaar The Oasis
             </span>
           </div>
         </div>
