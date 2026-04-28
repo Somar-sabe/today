@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useState } from "react";
 import { projects } from "../../components/ProjectsList";
 
-import HeaderSix from "@/components/header/headerSix";
+import HeaderSix from "@/components/header/HeaderSix";
 import styles from "./ProjectTimeline.module.css";
 import Footer from "@/components/footer/footer";
 import Interest from "@/components/intrest/intrest";
