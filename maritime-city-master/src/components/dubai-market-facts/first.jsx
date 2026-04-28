@@ -231,25 +231,7 @@ heroText: {
         </p>
       </section>
 
-      {/* CTA */}
-      <section style={styles.cta}>
-        <h2 style={{ fontSize: '28px', fontWeight: 700 }}>
-          Get Data-Backed Insights
-        </h2>
 
-        <p style={{ color: 'rgba(148,163,184,0.9)', marginTop: '8px' }}>
-          Speak with Altair Real Estate and uncover where institutional capital is moving next.
-        </p>
-
-        <div style={styles.form}>
-          <input placeholder="Your Name" style={styles.input} />
-          <input placeholder="Your Email" style={styles.input} />
-
-          <button style={styles.buttonPrimary}>
-            Request Consultation <Mail size={16} />
-          </button>
-        </div>
-      </section>
     </div>
   );
 }
