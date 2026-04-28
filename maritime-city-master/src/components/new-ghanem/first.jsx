@@ -14,7 +14,7 @@ export default function DubaiLandingSection() {
       fontFamily:
         '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
       color: '#0f172a',
-      backgroundColor: '#0b1220'
+      backgroundColor: 'white'
     },
 
 hero: {
@@ -168,7 +168,7 @@ heroText: {
       </section>
 
       {/* CARDS */}
-      <section style={styles.section}>
+      <section style={styles.section} >
         <div style={styles.grid}>
           {[
             {
