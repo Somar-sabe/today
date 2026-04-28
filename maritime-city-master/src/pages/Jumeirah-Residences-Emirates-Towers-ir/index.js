@@ -7,7 +7,7 @@ import Slider from "react-slick";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { LayoutTwo } from "@/layouts";
 import HeroSectionStyleOnear from "@/components/hero/threeStyle";
-import HeroSectionStyleFivear from "@/components/hero/styleFiveir";
+import HeroSectionStyleFiveFa from "@/components/hero/stylefiveir";
 import Interestar from "@/components/intrest/intrestar";
 import AboutUsStyleOneFa from "@/components/aboutUs/aboutusgallir";
 import ContactFormIr from "@/components/contactFormJltIr/contactFormjltIr";
@@ -155,7 +155,7 @@ function MaritimeCityAr(props) {
 <AboutUsStyleOneFa sectionSpace="pt-120 pb-90" />
         <serviceItemThree/>
     
-        <HeroSectionStyleFivear data={Herodata} />
+        <HeroSectionStyleFiveFa data={Herodata} />
               <Gallery sectionSpace="pt-120 pb-90"/>
 
         {/* <!-- ABOUT US AREA END -->
