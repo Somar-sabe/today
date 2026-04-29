@@ -29,7 +29,7 @@ hero: {
 },
 
 heroTitle: {
-  fontSize: '52px',
+  fontSize: '32px',
   fontWeight: '700',
   letterSpacing: '-0.8px',
   maxWidth: '900px',
