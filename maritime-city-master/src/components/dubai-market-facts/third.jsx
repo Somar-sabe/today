@@ -1,6 +1,61 @@
-import React from 'react';
+'use client'
+
+import React, { useState } from "react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import { useRouter } from "next/router";
 
 const ContactSection = () => {
+  const router = useRouter();
+
+  // State for functionality
+  const [phone, setPhone] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validation
+    if (!phone || phone.trim().length < 5) {
+      alert("Please enter a valid phone number.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      Name: `${formData.get("firstName")} ${formData.get("lastName")}`,
+      Phone: phone,
+      Email: formData.get("email"),
+      Message: `Budget: ${formData.get("budget")}, Interest: ${formData.get("interest")}`,
+      ContactType: "https://promotion.altairre.ae/maritime-city-en",
+    };
+
+    try {
+      const response = await fetch("https://api.altairre.ae/api/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        router.push("/Thankyou");
+      } else {
+        const errorData = await response.json();
+        console.error("Form submission failed:", errorData);
+        alert("There was an error submitting the form. Please try again.");
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+      alert("A network error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const styles = {
     section: {
       backgroundColor: '#0a192f',
@@ -19,7 +74,6 @@ const ContactSection = () => {
       gap: '4rem',
       alignItems: 'center',
     },
-    // Left Content
     contentSide: {
       display: 'flex',
       flexDirection: 'column',
@@ -75,7 +129,6 @@ const ContactSection = () => {
       letterSpacing: '0.1em',
       marginTop: '0.5rem',
     },
-    // Form Container
     formCard: {
       backgroundColor: 'rgba(255, 255, 255, 0.02)',
       border: '1px solid #1f2937',
@@ -95,7 +148,6 @@ const ContactSection = () => {
       fontSize: '0.8rem',
       color: '#9ca3af',
     },
-    // Form Elements
     inputGroupRow: {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
@@ -139,6 +191,7 @@ const ContactSection = () => {
       justifyContent: 'center',
       alignItems: 'center',
       gap: '0.5rem',
+      opacity: isSubmitting ? 0.7 : 1,
     },
     actionRow: {
       display: 'grid',
@@ -212,48 +265,70 @@ const ContactSection = () => {
             <p style={styles.formSubtitle}>Register your interest and we'll reach out within 24 hours — no obligation, complete discretion.</p>
           </div>
 
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={handleSubmit}>
             <div style={styles.inputGroupRow}>
               <div style={styles.fieldWrapper}>
                 <label style={styles.label}>First Name</label>
-                <input style={styles.input} type="text" placeholder="First name" />
+                <input name="firstName" style={styles.input} type="text" placeholder="First name" required />
               </div>
               <div style={styles.fieldWrapper}>
                 <label style={styles.label}>Last Name</label>
-                <input style={styles.input} type="text" placeholder="Last name" />
+                <input name="lastName" style={styles.input} type="text" placeholder="Last name" required />
               </div>
             </div>
 
             <div style={styles.fieldWrapper}>
               <label style={styles.label}>Email Address</label>
-              <input style={styles.input} type="email" placeholder="your@email.com" />
+              <input name="email" style={styles.input} type="email" placeholder="your@email.com" required />
             </div>
 
             <div style={styles.fieldWrapper}>
               <label style={styles.label}>Phone / WhatsApp</label>
-              <input style={styles.input} type="tel" placeholder="+971 or international" />
+              <PhoneInput
+                country={'ae'}
+                value={phone}
+                onChange={setPhone}
+                inputStyle={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid #1f2937',
+                    padding: '0.8rem 1rem',
+                    color: '#ffffff',
+                    fontSize: '0.9rem',
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '0'
+                }}
+                containerStyle={{ width: '100%' }}
+                buttonStyle={{ 
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)', 
+                    border: '1px solid #1f2937',
+                    borderRadius: '0' 
+                }}
+                dropdownStyle={{ color: '#000' }}
+                placeholder="+971 or international"
+              />
             </div>
 
             <div style={styles.inputGroupRow}>
               <div style={styles.fieldWrapper}>
                 <label style={styles.label}>Budget</label>
-                <input style={styles.input} type="text" placeholder="Select range" />
+                <input name="budget" style={styles.input} type="text" placeholder="Select range" />
               </div>
               <div style={styles.fieldWrapper}>
                 <label style={styles.label}>Interest</label>
-                <input style={styles.input} type="text" placeholder="I'm looking to..." />
+                <input name="interest" style={styles.input} type="text" placeholder="I'm looking to..." />
               </div>
             </div>
 
-            <button style={styles.submitBtn}>
-              Register My Interest —
+            <button type="submit" style={styles.submitBtn} disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Register My Interest —"}
             </button>
 
             <div style={styles.actionRow}>
-              <button style={styles.secondaryBtn}>
+              <button type="button" style={styles.secondaryBtn} onClick={() => window.open('https://wa.me/YOUR_NUMBER', '_blank')}>
                 <span style={{color: '#25D366'}}>●</span> WhatsApp Us
               </button>
-              <button style={styles.secondaryBtn}>
+              <button type="button" style={styles.secondaryBtn} onClick={() => window.location.href = 'tel:YOUR_NUMBER'}>
                 📞 Call Now
               </button>
             </div>
