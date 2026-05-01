@@ -1,0 +1,1173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Invest in Dubai Real Estate | Altair Real Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #0D1B2A;
+    --navy-2:  #112237;
+    --navy-3:  #162d47;
+    --navy-4:  #1c3a5e;
+    --sky:     #2B7FD4;
+    --sky-dim: rgba(43,127,212,0.12);
+    --gold:    #C8A96E;
+    --gold-lt: #DEC28F;
+    --gold-dim:rgba(200,169,110,0.12);
+    --star:    #E8D5A3;
+    --white:   #F4F1EC;
+    --muted:   rgba(244,241,236,0.55);
+    --serif:   'Playfair Display', Georgia, serif;
+    --sans:    'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: linear-gradient(to bottom, rgba(13,27,42,0.97) 60%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(200,169,110,0.1);
+  }
+
+  .nav-logo img {
+    height: 42px; width: auto;
+    filter: brightness(0) invert(1); /* make logo white on dark bg */
+  }
+
+  .nav-contact {
+    display: flex; align-items: center; gap: 2rem;
+  }
+  .nav-phone {
+    font-size: 0.78rem; color: var(--muted);
+    text-decoration: none; letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .nav-phone:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy);
+    border: none; font-family: var(--sans);
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 0.65rem 1.6rem; cursor: pointer;
+    transition: all 0.3s; text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--gold-lt); }
+
+  /* ─── STAR PARTICLES BG ─── */
+  .star-canvas {
+    position: absolute; inset: 0; z-index: 0;
+    pointer-events: none; overflow: hidden;
+  }
+  .star-dot {
+    position: absolute; border-radius: 50%;
+    background: var(--star); opacity: 0;
+    animation: twinkle var(--dur) ease-in-out var(--delay) infinite;
+  }
+  @keyframes twinkle {
+    0%,100% { opacity: 0; transform: scale(0.6); }
+    50%      { opacity: var(--op); transform: scale(1); }
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(43,127,212,0.1) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 20%, rgba(200,169,110,0.07) 0%, transparent 50%),
+      linear-gradient(160deg, var(--navy) 0%, #0a1520 60%, #091422 100%);
+  }
+
+  .hero-left {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 5% 5rem 7%;
+  }
+
+  .altair-star-badge {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
+  }
+  .altair-star-badge .star-glyph {
+    font-size: 1rem; color: var(--gold);
+  }
+  .altair-star-badge::after {
+    content: ''; width: 50px; height: 1px; background: rgba(200,169,110,0.4);
+  }
+
+  .hero-h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 4.8vw, 5.2rem);
+    font-weight: 500; line-height: 1.07;
+    margin-bottom: 1.8rem;
+    opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
+  }
+  .hero-h1 em { font-style: italic; color: var(--gold); display: block; }
+
+  .hero-sub {
+    font-size: 1.02rem; color: var(--muted);
+    max-width: 480px; margin-bottom: 2.8rem; line-height: 1.85;
+    opacity: 0; animation: fadeUp 0.7s 0.6s forwards;
+  }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; flex-wrap: wrap;
+    margin-bottom: 3rem;
+    opacity: 0; animation: fadeUp 0.7s 0.8s forwards;
+  }
+  .hero-stat { border-left: 2px solid rgba(200,169,110,0.3); padding-left: 1rem; }
+  .hero-stat-num {
+    font-family: var(--serif); font-size: 2rem; font-weight: 400;
+    color: var(--gold-lt); line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-top: 0.3rem;
+  }
+
+  /* ─── FORM ─── */
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 6% 5rem 3%;
+    opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
+  }
+
+  .form-card {
+    background: rgba(17,34,55,0.92);
+    border: 1px solid rgba(200,169,110,0.18);
+    padding: 2.8rem 2.5rem;
+    backdrop-filter: blur(24px);
+    position: relative;
+  }
+  .form-card::before {
+    content:''; position:absolute; top:0; left:0;
+    height:3px; width:70px; background: var(--gold);
+  }
+  .form-card::after {
+    content:'★'; position:absolute; top:1.2rem; right:1.8rem;
+    font-size:1.1rem; color:rgba(200,169,110,0.18); letter-spacing:0.2em;
+  }
+
+  .form-title {
+    font-family: var(--serif); font-size: 1.7rem; font-weight: 500;
+    margin-bottom: 0.4rem; line-height: 1.2;
+  }
+  .form-sub {
+    font-size: 0.8rem; color: var(--muted);
+    margin-bottom: 1.8rem; line-height: 1.6;
+  }
+
+  .form-group { margin-bottom: 1.1rem; }
+  .form-group label {
+    display: block; font-size: 0.62rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.45rem;
+  }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(200,169,110,0.2);
+    color: var(--white);
+    font-family: var(--sans); font-size: 0.88rem; font-weight: 300;
+    padding: 0.8rem 1rem; outline: none;
+    transition: border-color 0.3s; appearance: none;
+  }
+  .form-group input::placeholder { color: rgba(244,241,236,0.22); }
+  .form-group input:focus,
+  .form-group select:focus { border-color: var(--gold); background: rgba(200,169,110,0.05); }
+  .form-group select option { background: var(--navy-2); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+
+  .form-submit {
+    width: 100%; margin-top: 1.3rem;
+    background: var(--gold); border: none;
+    color: var(--navy); font-family: var(--sans);
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 1.05rem; cursor: pointer; transition: all 0.3s;
+  }
+  .form-submit:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+  .form-alts {
+    display: flex; gap: 1rem; margin-top: 1rem;
+  }
+  .form-alt-btn {
+    flex: 1; padding: 0.75rem;
+    background: transparent; cursor: pointer; transition: all 0.3s;
+    font-family: var(--sans); font-size: 0.65rem;
+    font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    text-align: center; text-decoration: none; display: block;
+  }
+  .form-alt-wa {
+    border: 1px solid rgba(37,211,102,0.4); color: #25D166;
+  }
+  .form-alt-wa:hover { background: rgba(37,211,102,0.08); }
+  .form-alt-call {
+    border: 1px solid rgba(200,169,110,0.3); color: var(--gold);
+  }
+  .form-alt-call:hover { background: var(--gold-dim); }
+
+  .form-privacy {
+    text-align: center; margin-top: 1rem;
+    font-size: 0.62rem; color: var(--muted); letter-spacing: 0.04em;
+  }
+  .form-privacy a { color: var(--gold); text-decoration: none; }
+
+  /* ─── TRUST BAR ─── */
+  .trust-bar {
+    background: var(--navy-2);
+    border-top: 1px solid rgba(200,169,110,0.1);
+    border-bottom: 1px solid rgba(200,169,110,0.08);
+    padding: 1.3rem 6%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.7rem; letter-spacing: 0.08em; color: var(--muted);
+  }
+  .trust-item span { color: var(--gold); }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 7%; }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+
+  .section-eyebrow {
+    font-size: 0.63rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-eyebrow::before { content:'★'; font-size: 0.55rem; }
+
+  .section-h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.8vw, 3.4rem);
+    font-weight: 500; line-height: 1.12; margin-bottom: 1.2rem;
+  }
+  .section-h2 em { font-style: italic; color: var(--gold); }
+  .section-body { color: var(--muted); max-width: 580px; font-size: 0.98rem; }
+
+  /* ─── GATEWAY SECTION (WHY DUBAI) ─── */
+  .gateway-section { background: var(--navy-2); }
+  .gateway-top {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; margin-bottom: 4rem; align-items: end;
+  }
+  .gateway-right-intro {
+    color: var(--muted); font-size: 1rem; line-height: 1.85;
+    display: flex; flex-direction: column; justify-content: flex-end; gap: 1rem;
+  }
+  .gateway-pull-quote {
+    font-family: var(--serif); font-style: italic;
+    font-size: 1.2rem; color: var(--white);
+    padding-left: 1.2rem;
+    border-left: 3px solid var(--gold);
+    line-height: 1.6;
+  }
+
+  .why-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(200,169,110,0.08);
+  }
+  .why-card {
+    background: var(--navy-2);
+    padding: 2.8rem 2.2rem;
+    transition: background 0.3s;
+    position: relative;
+  }
+  .why-card:hover { background: var(--navy-3); }
+  .why-card-num {
+    position: absolute; top: 1.5rem; right: 2rem;
+    font-family: var(--serif); font-size: 3.5rem; font-weight: 400;
+    color: rgba(200,169,110,0.07); line-height: 1;
+  }
+  .why-icon {
+    width: 44px; height: 44px; margin-bottom: 1.4rem;
+    background: var(--sky-dim); display: flex;
+    align-items: center; justify-content: center;
+    font-size: 1.25rem;
+  }
+  .why-card h3 {
+    font-family: var(--serif); font-size: 1.3rem; font-weight: 500;
+    margin-bottom: 0.75rem; line-height: 1.25;
+  }
+  .why-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.8; }
+  .why-card-stat {
+    margin-top: 1.4rem; padding-top: 1.4rem;
+    border-top: 1px solid rgba(200,169,110,0.12);
+    font-size: 0.68rem; letter-spacing: 0.1em; color: var(--sky);
+  }
+
+  /* ─── NUMBERS STRIP ─── */
+  .numbers-strip {
+    background: var(--sky);
+    padding: 4.5rem 7%;
+  }
+  .numbers-inner { max-width: 1280px; margin: 0 auto; }
+  .numbers-eyebrow {
+    font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(255,255,255,0.65); margin-bottom: 2.5rem;
+  }
+  .numbers-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    border-left: 1px solid rgba(255,255,255,0.2);
+  }
+  .num-block {
+    padding: 0.5rem 2rem;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .num-val {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+    font-weight: 400; line-height: 1; color: #fff;
+  }
+  .num-label {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); margin-top: 0.5rem;
+  }
+  .num-src { font-size: 0.57rem; color: rgba(255,255,255,0.4); margin-top: 0.3rem; }
+
+  /* ─── RESILIENCE SECTION ─── */
+  .resilience-section {
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .resilience-vis {
+    background: var(--navy-3);
+    padding: 5rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center;
+    position: relative; overflow: hidden; min-height: 480px;
+  }
+  .resilience-vis::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 360px; height: 360px; border-radius: 50%;
+    border: 1px solid rgba(200,169,110,0.1);
+  }
+  .resilience-vis::after {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 240px; height: 240px; border-radius: 50%;
+    border: 1px solid rgba(43,127,212,0.15);
+  }
+  .res-big-num {
+    font-family: var(--serif); font-size: 7rem; font-weight: 400;
+    color: var(--gold); line-height: 1; position: relative; z-index: 1;
+  }
+  .res-label {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-top: 0.6rem; max-width: 200px; position: relative; z-index: 1;
+  }
+  .res-quote {
+    font-family: var(--serif); font-style: italic;
+    font-size: 1rem; color: var(--white);
+    margin-top: 1.5rem; position: relative; z-index: 1;
+  }
+
+  .resilience-content { padding: 5rem; background: var(--navy); }
+  .resilience-content .section-body { margin-bottom: 2.5rem; }
+  .res-list { list-style: none; }
+  .res-list li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.1rem 0; border-bottom: 1px solid rgba(200,169,110,0.08);
+    font-size: 0.88rem; color: var(--muted);
+  }
+  .res-list li:last-child { border-bottom: none; }
+  .res-check { color: var(--sky); flex-shrink: 0; margin-top: 0.15rem; font-size: 0.8rem; }
+  .res-list strong { color: var(--white); display: block; font-weight: 500; margin-bottom: 0.2rem; }
+
+  /* ─── PROPERTY TYPES ─── */
+  .property-section { background: var(--navy-2); }
+  .property-header {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: end; margin-bottom: 4rem;
+  }
+  .prop-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1px; background: rgba(200,169,110,0.07);
+  }
+  .prop-card {
+    background: var(--navy-2); padding: 2.4rem 2rem;
+    display: flex; flex-direction: column; transition: background 0.3s;
+  }
+  .prop-card:hover { background: var(--navy-3); }
+  .prop-tag {
+    font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--sky); margin-bottom: 1rem;
+  }
+  .prop-card h3 {
+    font-family: var(--serif); font-size: 1.35rem; font-weight: 500;
+    margin-bottom: 0.7rem; line-height: 1.25;
+  }
+  .prop-card p { font-size: 0.82rem; color: var(--muted); flex:1; line-height: 1.8; }
+  .prop-areas {
+    margin-top: 1rem; font-size: 0.68rem; color: rgba(200,169,110,0.7);
+    letter-spacing: 0.04em;
+  }
+  .prop-divider {
+    margin-top: 1.4rem; padding-top: 1.4rem;
+    border-top: 1px solid rgba(200,169,110,0.12);
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .prop-yield {
+    font-family: var(--serif); font-size: 1.8rem; font-weight: 400;
+    color: var(--gold-lt);
+  }
+  .prop-yield-lbl { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; margin-top: 0.2rem; }
+  .prop-from { text-align: right; }
+  .prop-from-val { font-size: 0.88rem; color: var(--white); font-weight: 500; }
+  .prop-from-lbl { font-size: 0.58rem; color: var(--muted); letter-spacing: 0.1em; margin-top: 0.2rem; }
+
+  /* ─── AREAS ─── */
+  .areas-section { background: var(--navy); }
+  .areas-grid {
+    display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 3rem;
+  }
+  .area-pill {
+    padding: 0.6rem 1.4rem;
+    border: 1px solid rgba(200,169,110,0.2);
+    font-size: 0.75rem; color: var(--muted);
+    letter-spacing: 0.08em; cursor: default;
+    transition: all 0.25s;
+  }
+  .area-pill:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+  .area-pill.featured {
+    border-color: rgba(43,127,212,0.4); color: #7bb8ea;
+    background: var(--sky-dim);
+  }
+
+  /* ─── TEAM ─── */
+  .team-section { background: var(--navy-2); }
+  .team-intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: center; margin-bottom: 4rem;
+  }
+  .team-stat-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .team-stat-card {
+    background: var(--navy-3); padding: 2rem 1.5rem;
+    border-left: 3px solid var(--sky);
+  }
+  .team-stat-val {
+    font-family: var(--serif); font-size: 2.5rem; font-weight: 400;
+    color: var(--gold-lt); line-height: 1;
+  }
+  .team-stat-lbl { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; margin-top: 0.4rem; }
+
+  .team-agents {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;
+    margin-top: 2rem;
+  }
+  .agent-card {
+    text-align: center;
+  }
+  .agent-avatar {
+    width: 70px; height: 70px; border-radius: 50%;
+    margin: 0 auto 0.7rem;
+    object-fit: cover;
+    border: 2px solid rgba(200,169,110,0.25);
+    display: block;
+  }
+  .agent-avatar-placeholder {
+    width: 70px; height: 70px; border-radius: 50%;
+    background: var(--navy-4);
+    border: 2px solid rgba(200,169,110,0.2);
+    margin: 0 auto 0.7rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .agent-name { font-size: 0.75rem; color: var(--white); font-weight: 500; }
+  .agent-role { font-size: 0.62rem; color: var(--gold); letter-spacing: 0.07em; margin-top: 0.2rem; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testi-section { background: var(--navy); }
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1.5rem; margin-top: 3.5rem;
+  }
+  .testi-card {
+    border: 1px solid rgba(200,169,110,0.12);
+    padding: 2.2rem;
+  }
+  .testi-stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+  .testi-quote-glyph { font-family: var(--serif); font-size: 2.5rem; color: var(--gold); opacity: 0.2; line-height: 0.4; margin-bottom: 1.2rem; }
+  .testi-text { font-family: var(--serif); font-style: italic; font-size: 1rem; line-height: 1.72; color: var(--white); margin-bottom: 1.4rem; }
+  .testi-author { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gold); }
+  .testi-role { font-size: 0.65rem; color: var(--muted); margin-top: 0.2rem; }
+
+  /* ─── FINAL CTA ─── */
+  .final-cta {
+    padding: 7rem 7%; text-align: center;
+    background: var(--navy-3); position: relative; overflow: hidden;
+  }
+  .final-cta::before {
+    content: '★';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-size: 35rem; color: rgba(200,169,110,0.025);
+    font-family: serif; pointer-events: none;
+  }
+  .final-cta-inner { position: relative; z-index: 1; }
+  .final-cta-inner .section-h2 { max-width: 680px; margin: 0 auto 1.2rem; }
+  .final-cta-inner .section-body { margin: 0 auto 2.8rem; text-align: center; }
+  .cta-btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+  .btn-gold {
+    background: var(--gold); color: var(--navy); border: none;
+    font-family: var(--sans); font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 1.05rem 2.6rem; cursor: pointer;
+    transition: all 0.3s; text-decoration: none; display: inline-block;
+  }
+  .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+  .btn-wa {
+    background: transparent; color: #25D166;
+    border: 1px solid rgba(37,211,102,0.45);
+    font-family: var(--sans); font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 1.05rem 2.6rem; cursor: pointer;
+    transition: all 0.3s; text-decoration: none; display: inline-block;
+  }
+  .btn-wa:hover { background: rgba(37,211,102,0.08); }
+  .btn-sky {
+    background: transparent; color: var(--sky);
+    border: 1px solid rgba(43,127,212,0.4);
+    font-family: var(--sans); font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 1.05rem 2.6rem; cursor: pointer;
+    transition: all 0.3s; text-decoration: none; display: inline-block;
+  }
+  .btn-sky:hover { background: var(--sky-dim); }
+  .cta-note { font-size: 0.72rem; color: var(--muted); }
+  .cta-note a { color: var(--gold); text-decoration: none; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #080f18;
+    border-top: 1px solid rgba(200,169,110,0.1);
+    padding: 2.2rem 7%;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo img { height: 36px; filter: brightness(0) invert(1) opacity(0.7); }
+  .footer-links { display: flex; gap: 1.8rem; }
+  .footer-links a { font-size: 0.67rem; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.6rem; color: rgba(244,241,236,0.28); text-align: right; }
+
+  /* ─── DISCLAIMER ─── */
+  .disclaimer {
+    background: #040a10; padding: 1rem 7%;
+    font-size: 0.59rem; color: rgba(244,241,236,0.25);
+    line-height: 1.6; letter-spacing: 0.02em;
+  }
+
+  /* ─── MOBILE STICKY ─── */
+  .mobile-cta-bar {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .mob-cta-wa {
+    background: #25D166; color: #fff; text-align: center; padding: 1.1rem;
+    font-family: var(--sans); font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none;
+  }
+  .mob-cta-call {
+    background: var(--gold); color: var(--navy); text-align: center; padding: 1.1rem;
+    font-family: var(--sans); font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none;
+  }
+  @media (min-width: 769px) { .mobile-cta-bar { display: none; } }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1100px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 9rem 7% 2rem; }
+    .hero-right { padding: 2rem 7% 5rem; }
+    .gateway-top { grid-template-columns: 1fr; gap: 2rem; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .resilience-section { grid-template-columns: 1fr; }
+    .resilience-content { padding: 3rem 7%; }
+    .property-header { grid-template-columns: 1fr; }
+    .prop-grid { grid-template-columns: 1fr; }
+    .team-intro { grid-template-columns: 1fr; }
+    .team-agents { grid-template-columns: repeat(4,1fr); }
+    .testi-grid { grid-template-columns: 1fr; }
+    .numbers-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .team-agents { grid-template-columns: repeat(3,1fr); }
+    .team-stat-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://altairre.ae" class="nav-logo" target="_blank">
+    <img src="https://www.altairre.ae/images/logo.png" alt="Altair Real Estate">
+  </a>
+  <div class="nav-contact">
+    <a href="tel:+971506251573" class="nav-phone">📞 +971 50 625 1573</a>
+    <a href="#lead-form" class="nav-cta">Free Consultation</a>
+  </div>
+</nav>
+
+<!-- STAR PARTICLES -->
+<div class="star-canvas" id="starCanvas"></div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="lead-form">
+  <div class="hero-bg"></div>
+
+  <div class="hero-left">
+    <div class="altair-star-badge">
+      <span class="star-glyph">★</span>
+      Altair Real Estate · Dubai 2026
+    </div>
+
+    <h1 class="hero-h1">
+      Your Gateway to<br>
+      <em>Exceptional</em><br>
+      Dubai Properties
+    </h1>
+
+    <p class="hero-sub">
+      While global uncertainty reshapes capital flows, Dubai's fundamentals remain unshaken — and Altair's expert team is here to guide you through every step of your investment journey.
+    </p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">AED 917B</div>
+        <div class="hero-stat-label">Transactions in 2025</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">8.1%</div>
+        <div class="hero-stat-label">Avg. Rental Yield</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">0%</div>
+        <div class="hero-stat-label">Capital Gains Tax</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEAD FORM -->
+  <div class="hero-right">
+    <div class="form-card">
+      <h2 class="form-title">Speak With an Altair Advisor</h2>
+      <p class="form-sub">Register your interest and we'll reach out within 24 hours — no obligation, complete discretion.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="First name">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Last name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Phone / WhatsApp</label>
+        <input type="tel" placeholder="+971 or international">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Budget</label>
+          <select>
+            <option value="" disabled selected>Select range</option>
+            <option>Below AED 1,000,000</option>
+            <option>AED 1M – 2M</option>
+            <option>AED 2M – 5M</option>
+            <option>AED 5M – 10M</option>
+            <option>More than AED 10M</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Interest</label>
+          <select>
+            <option value="" disabled selected>I'm looking to…</option>
+            <option>Buy Off-Plan</option>
+            <option>Buy Secondary</option>
+            <option>Rent a Property</option>
+            <option>Sell My Property</option>
+            <option>Investment Advice</option>
+            <option>Get Golden Visa</option>
+          </select>
+        </div>
+      </div>
+      <button class="form-submit" id="submitBtn">Register My Interest →</button>
+
+      <div class="form-alts">
+        <a href="https://wa.me/971506251573" class="form-alt-btn form-alt-wa" target="_blank">💬 WhatsApp Us</a>
+        <a href="tel:+971506251573" class="form-alt-btn form-alt-call">📞 Call Now</a>
+      </div>
+
+      <p class="form-privacy">🔒 Secure &amp; Confidential. <a href="https://www.altairre.ae/privacy-policy" target="_blank">Privacy Policy</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span>★</span> Your Gateway to Exceptional Properties</div>
+  <div class="trust-item"><span>🏛️</span> RERA Licensed Agency</div>
+  <div class="trust-item"><span>🌍</span> 19+ Expert Advisors</div>
+  <div class="trust-item"><span>📍</span> Off-Plan · Secondary · Rentals</div>
+  <div class="trust-item"><span>📞</span> Total Free Customer Care</div>
+</div>
+
+<!-- ══ WHY DUBAI / GATEWAY SECTION ══ -->
+<section class="gateway-section">
+  <div class="section-inner">
+    <div class="gateway-top reveal">
+      <div>
+        <div class="section-eyebrow">Why Dubai. Why Now.</div>
+        <h2 class="section-h2">A City That Turns <em>Uncertainty</em><br>into Opportunity</h2>
+      </div>
+      <div class="gateway-right-intro">
+        <p>Dubai doesn't just weather global crises — it capitalises on them. Every wave of regional or global instability over the past 25 years has sent more capital, more talent, and more wealth into the emirate.</p>
+        <div class="gateway-pull-quote">"Every major crisis brought a new class of investors to Dubai. We help them find the right property, at the right time."</div>
+      </div>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="why-card-num">01</span>
+        <div class="why-icon">💰</div>
+        <h3>Zero Tax on Your Returns</h3>
+        <p>No capital gains tax. No income tax. No inheritance tax. Dubai's tax-free regime is not a temporary incentive — it's constitutionally embedded into the UAE's economic model.</p>
+        <div class="why-card-stat">Save up to 28% vs. equivalent UK tax liability</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-card-num">02</span>
+        <div class="why-icon">📈</div>
+        <h3>Rental Yields That Work for You</h3>
+        <p>Gross yields of 6–10% are standard across Altair's portfolio areas. Compare that to London (2.8%), Singapore (3.5%), or Hong Kong (2.2%) — Dubai simply outperforms.</p>
+        <div class="why-card-stat">Average gross yield: 8.1% across prime areas</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-card-num">03</span>
+        <div class="why-icon">🏦</div>
+        <h3>Dollar-Pegged Stability</h3>
+        <p>The UAE Dirham has been pegged to the US Dollar since 1997 — nearly 30 years of unbroken currency stability, eliminating exchange rate risk for international investors.</p>
+        <div class="why-card-stat">AED/USD peg: 28+ consecutive years</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-card-num">04</span>
+        <div class="why-icon">🪪</div>
+        <h3>10-Year Golden Visa</h3>
+        <p>Invest AED 2M+ in property and qualify for UAE's Golden Visa — 10-year renewable residency covering you, your spouse, and your children. Altair handles the full process.</p>
+        <div class="why-card-stat">Altair guides you through every step of the visa process</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-card-num">05</span>
+        <div class="why-icon">🏛️</div>
+        <h3>Investor-Grade Legal Protection</h3>
+        <p>RERA regulation, Dubai Land Department oversight, mandatory escrow accounts for off-plan projects, and full freehold ownership rights for foreigners — your investment is protected by law.</p>
+        <div class="why-card-stat">Freehold ownership in 63+ designated areas</div>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-card-num">06</span>
+        <div class="why-icon">🌍</div>
+        <h3>Dubai as a Safe-Haven Magnet</h3>
+        <p>The Arab Spring (2011), Russia-Ukraine war (2022), and regional conflicts in 2026 — each crisis brought a new wave of capital and new buyers to Dubai. The pattern is consistent.</p>
+        <div class="why-card-stat">HNW capital inflows from conflict regions: +46% YoY</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NUMBERS STRIP ══ -->
+<div class="numbers-strip">
+  <div class="numbers-inner">
+    <div class="numbers-eyebrow">Dubai Real Estate — Key Market Indicators 2025–2026</div>
+    <div class="numbers-grid">
+      <div class="num-block reveal">
+        <div class="num-val">AED 917B</div>
+        <div class="num-label">Total Transactions (2025)</div>
+        <div class="num-src">Dubai Land Department</div>
+      </div>
+      <div class="num-block reveal">
+        <div class="num-val">270K+</div>
+        <div class="num-label">Deals Recorded in 2025</div>
+        <div class="num-src">DLD Annual Report</div>
+      </div>
+      <div class="num-block reveal">
+        <div class="num-val">75%</div>
+        <div class="num-label">Price Growth Since 2021</div>
+        <div class="num-src">ANAROCK Research</div>
+      </div>
+      <div class="num-block reveal">
+        <div class="num-val">81K+</div>
+        <div class="num-label">Dollar Millionaires in Dubai</div>
+        <div class="num-src">Henley & Partners, 2025</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RESILIENCE SECTION ══ -->
+<div class="resilience-section">
+  <div class="resilience-vis">
+    <div class="res-big-num">96%</div>
+    <div class="res-label">of Iranian missile &amp; drone attacks intercepted by UAE air defence — March 2026</div>
+    <div class="res-quote">"Dubai was tested in real time — and it held."</div>
+  </div>
+  <div class="resilience-content">
+    <div class="section-eyebrow">Dubai's Resilience Story</div>
+    <h2 class="section-h2">Tested Under <em>Pressure.</em><br>Proven in Practice.</h2>
+    <p class="section-body">The 2026 regional conflict reached the UAE's borders. For the first time, Dubai faced direct attack. Here is what the data shows — and why experienced investors stayed the course.</p>
+    <ul class="res-list">
+      <li>
+        <span class="res-check">✦</span>
+        <div>
+          <strong>96% of Attacks Intercepted</strong>
+          The UAE's layered air defence performed at a global benchmark level. Infrastructure remained fully operational throughout.
+        </div>
+      </li>
+      <li>
+        <span class="res-check">✦</span>
+        <div>
+          <strong>DIFC Company Registrations: +59% in March 2026</strong>
+          During the peak conflict month, 258 new companies registered at DIFC — up from 162 in March 2025. Investors don't leave Dubai; they consolidate here.
+        </div>
+      </li>
+      <li>
+        <span class="res-check">✦</span>
+        <div>
+          <strong>AED 55.18B in January 2026 Transactions</strong>
+          A 43.9% year-on-year surge just weeks before tensions peaked — confirming the market's underlying structural strength.
+        </div>
+      </li>
+      <li>
+        <span class="res-check">✦</span>
+        <div>
+          <strong>Ceasefire Conditions Accelerating Recovery</strong>
+          With peace talks advancing, Palm Jumeirah, Downtown, and Dubai Hills are seeing the fastest luxury market recovery — exactly where Altair operates.
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ PROPERTY TYPES ══ -->
+<section class="property-section">
+  <div class="section-inner">
+    <div class="property-header reveal">
+      <div>
+        <div class="section-eyebrow">Altair's Portfolio</div>
+        <h2 class="section-h2">Every Budget.<br><em>Every Strategy.</em></h2>
+      </div>
+      <p class="section-body">Whether you're entering the market for the first time or adding to an established portfolio, Altair's advisors match you to the right property — not just any property. We work across off-plan, secondary, and rental markets.</p>
+    </div>
+    <div class="prop-grid">
+      <div class="prop-card reveal">
+        <div class="prop-tag">Off-Plan &amp; Secondary · Golden Visa Eligible</div>
+        <h3>Apartments &amp; Studios</h3>
+        <p>High-demand, high-liquidity properties in Dubai's most active residential corridors. Ideal for rental income investors and first-time buyers targeting the Golden Visa threshold.</p>
+        <div class="prop-areas">📍 Business Bay · Dubai Marina · JBR · JVC · Creek Harbour</div>
+        <div class="prop-divider">
+          <div>
+            <div class="prop-yield">7–9%</div>
+            <div class="prop-yield-lbl">Gross Rental Yield</div>
+          </div>
+          <div class="prop-from">
+            <div class="prop-from-val">From AED 700K</div>
+            <div class="prop-from-lbl">Entry Price</div>
+          </div>
+        </div>
+      </div>
+      <div class="prop-card reveal">
+        <div class="prop-tag">Premium · Capital Appreciation</div>
+        <h3>Villas &amp; Townhouses</h3>
+        <p>Family-grade properties in Dubai's most sought-after communities. Strong capital appreciation and premium long-term tenants from the expatriate professional community.</p>
+        <div class="prop-areas">📍 Dubai Hills · Tilal Al Ghaf · Arabian Ranches · Damac Hills</div>
+        <div class="prop-divider">
+          <div>
+            <div class="prop-yield">5–7%</div>
+            <div class="prop-yield-lbl">Gross Rental Yield</div>
+          </div>
+          <div class="prop-from">
+            <div class="prop-from-val">From AED 2.2M</div>
+            <div class="prop-from-lbl">Entry Price</div>
+          </div>
+        </div>
+      </div>
+      <div class="prop-card reveal">
+        <div class="prop-tag">Ultra-Prime · Wealth Preservation</div>
+        <h3>Penthouses &amp; Waterfront</h3>
+        <p>Iconic addresses. Emaar Beachfront, Palm Jumeirah, Bluewaters Island, Port De La Mer. Luxury assets with sky-high appreciation and an ultra-high-net-worth tenant pool.</p>
+        <div class="prop-areas">📍 Palm Jumeirah · Emaar Beachfront · Bluewaters · Port De La Mer</div>
+        <div class="prop-divider">
+          <div>
+            <div class="prop-yield">4–6%</div>
+            <div class="prop-yield-lbl">Gross Rental Yield</div>
+          </div>
+          <div class="prop-from">
+            <div class="prop-from-val">From AED 5M</div>
+            <div class="prop-from-lbl">Entry Price</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AREAS ══ -->
+<section class="areas-section">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Areas We Cover</div>
+    <h2 class="section-h2 reveal">Every Prime Address<br>in <em>Dubai</em></h2>
+    <p class="section-body reveal">Altair's team is active across all of Dubai's key investment zones — from established landmarks to emerging growth corridors.</p>
+    <div class="areas-grid reveal">
+      <div class="area-pill featured">Palm Jumeirah</div>
+      <div class="area-pill featured">Downtown Dubai</div>
+      <div class="area-pill featured">Dubai Hills Estate</div>
+      <div class="area-pill featured">Emaar Beachfront</div>
+      <div class="area-pill featured">Dubai Marina</div>
+      <div class="area-pill featured">Business Bay</div>
+      <div class="area-pill">Dubai Creek Harbour</div>
+      <div class="area-pill">JBR</div>
+      <div class="area-pill">Bluewaters Island</div>
+      <div class="area-pill">Port De La Mer</div>
+      <div class="area-pill">Jumeirah Golf Estates</div>
+      <div class="area-pill">Tilal Al Ghaf</div>
+      <div class="area-pill">Damac Hills</div>
+      <div class="area-pill">Dubailand</div>
+      <div class="area-pill">+ More on Request</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEAM ══ -->
+<section class="team-section">
+  <div class="section-inner">
+    <div class="team-intro">
+      <div>
+        <div class="section-eyebrow reveal">Meet the Altair Team</div>
+        <h2 class="section-h2 reveal">19+ Expert Advisors.<br><em>One Goal.</em></h2>
+        <p class="section-body reveal" style="margin-bottom:0">Our multilingual, multicultural team brings local expertise and global perspective to every client relationship. From your first enquiry to your title deed — we're with you every step of the way.</p>
+      </div>
+      <div class="team-stat-row reveal">
+        <div class="team-stat-card">
+          <div class="team-stat-val">19+</div>
+          <div class="team-stat-lbl">Specialist Advisors</div>
+        </div>
+        <div class="team-stat-card">
+          <div class="team-stat-val">10+</div>
+          <div class="team-stat-lbl">Languages Spoken</div>
+        </div>
+        <div class="team-stat-card">
+          <div class="team-stat-val">Off-Plan</div>
+          <div class="team-stat-lbl">Secondary &amp; Rentals</div>
+        </div>
+        <div class="team-stat-card">
+          <div class="team-stat-val">Free</div>
+          <div class="team-stat-lbl">Customer Care, Always</div>
+        </div>
+      </div>
+    </div>
+    <div class="team-agents reveal">
+      <div class="agent-card">
+        <img src="https://www.altairre.ae/rahela.jpeg" alt="Raheleh Azhdari" class="agent-avatar" onerror="this.style.display='none'">
+        <div class="agent-name">Raheleh Azhdari</div>
+        <div class="agent-role">Sales Manager</div>
+      </div>
+      <div class="agent-card">
+        <img src="https://www.altairre.ae/majid.jpeg" alt="Majid Malik" class="agent-avatar" onerror="this.style.display='none'">
+        <div class="agent-name">Majid Malik</div>
+        <div class="agent-role">Finance Manager</div>
+      </div>
+      <div class="agent-card">
+        <img src="https://www.altairre.ae/mjd.jpeg" alt="Mozhdeh Maaref" class="agent-avatar" onerror="this.style.display='none'">
+        <div class="agent-name">Mozhdeh Maaref</div>
+        <div class="agent-role">Sales Agent</div>
+      </div>
+      <div class="agent-card">
+        <img src="https://www.altairre.ae/peter.jpeg" alt="Peter Emmanuel" class="agent-avatar" onerror="this.style.display='none'">
+        <div class="agent-name">Peter Emmanuel</div>
+        <div class="agent-role">Sales Agent</div>
+      </div>
+      <div class="agent-card">
+        <img src="https://www.altairre.ae/oliver.jpeg" alt="Oliver Cho" class="agent-avatar" onerror="this.style.display='none'">
+        <div class="agent-name">Oliver Cho</div>
+        <div class="agent-role">Sales Agent</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testi-section">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Client Stories</div>
+    <h2 class="section-h2 reveal">Real Clients.<br><em>Real Results.</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote-glyph">"</div>
+        <p class="testi-text">Altair made the entire process simple. From viewing properties online to signing the title deed, every step was explained clearly. I now have a fully tenanted apartment in Business Bay generating 8.4% yield.</p>
+        <div class="testi-author">James R.</div>
+        <div class="testi-role">British Investor · Business Bay, 2024</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote-glyph">"</div>
+        <p class="testi-text">The Golden Visa advice from the Altair team was invaluable. We bought in Dubai Hills, received our family visas within three months, and our property has already appreciated over 18%. Truly exceptional service.</p>
+        <div class="testi-author">Priya M.</div>
+        <div class="testi-role">Indian Entrepreneur · Dubai Hills, 2024</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote-glyph">"</div>
+        <p class="testi-text">Even during the tensions of early 2026, my Altair advisor kept me informed and reassured. Zero void periods on my Palm Jumeirah unit. Dubai and Altair — a combination I trust completely.</p>
+        <div class="testi-author">Khalid A.</div>
+        <div class="testi-role">Gulf Investor · Palm Jumeirah, 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <div class="section-eyebrow" style="justify-content:center">Your Next Step</div>
+    <h2 class="section-h2">Find Your Dream Property<br>with <em>Altair</em></h2>
+    <p class="section-body">
+      Let our expert advisors guide you to the right opportunity — whether you're buying off-plan, secondary, or seeking rental income. The Altair team is ready to help you find your perfect property in Dubai.
+    </p>
+    <div class="cta-btn-row">
+      <a href="#lead-form" class="btn-gold">Register My Interest</a>
+      <a href="https://wa.me/971506251573" class="btn-wa" target="_blank">💬 WhatsApp Us</a>
+      <a href="tel:+971506251573" class="btn-sky">📞 Call: +971 50 625 1573</a>
+    </div>
+    <p class="cta-note">Or email us anytime at <a href="mailto:info@altairre.ae">info@altairre.ae</a> · Total Free Customer Care</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <a href="https://altairre.ae" target="_blank">
+      <img src="https://www.altairre.ae/images/logo.png" alt="Altair Real Estate">
+    </a>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.altairre.ae/en/off-plan" target="_blank">Off-Plan</a>
+    <a href="https://www.altairre.ae/en/secondary" target="_blank">Secondary</a>
+    <a href="https://www.altairre.ae/en/rent" target="_blank">Rent</a>
+    <a href="https://www.altairre.ae/en/our-team" target="_blank">Our Team</a>
+    <a href="https://www.altairre.ae/en/contact" target="_blank">Contact</a>
+  </div>
+  <div class="footer-copy">RERA Licensed · altairre.ae<br>© Altair Real Estate L.L.C. 2026. All Rights Reserved.</div>
+</footer>
+
+<div class="disclaimer">
+  <strong>Investment Disclaimer:</strong> This landing page is for informational and marketing purposes only and does not constitute financial, legal, or investment advice. Real estate values can increase or decrease. Past performance is not indicative of future results. Rental yield figures represent approximate market averages and individual property results may vary. All market data is sourced from publicly available reports including the Dubai Land Department, ANAROCK, Henley &amp; Partners, and ACLED. Altair Real Estate L.L.C. is a RERA-licensed agency. Please conduct your own due diligence and consult a qualified advisor before making any investment decision.
+</div>
+
+<!-- MOBILE CTA BAR -->
+<div class="mobile-cta-bar">
+  <a href="https://wa.me/971506251573" class="mob-cta-wa" target="_blank">💬 WhatsApp</a>
+  <a href="tel:+971506251573" class="mob-cta-call">📞 Call Now</a>
+</div>
+
+<script>
+  // ─── STAR PARTICLES ───
+  (function() {
+    const canvas = document.getElementById('starCanvas');
+    const hero = document.querySelector('.hero');
+    canvas.style.position = 'absolute';
+    hero.style.position = 'relative';
+    hero.appendChild(canvas);
+
+    for (let i = 0; i < 60; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'star-dot';
+      const size = Math.random() * 2.5 + 0.5;
+      dot.style.cssText = `
+        width:${size}px; height:${size}px;
+        top:${Math.random()*100}%;
+        left:${Math.random()*100}%;
+        --dur:${(Math.random()*4+2).toFixed(1)}s;
+        --delay:${(Math.random()*5).toFixed(1)}s;
+        --op:${(Math.random()*0.5+0.15).toFixed(2)};
+      `;
+      canvas.appendChild(dot);
+    }
+  })();
+
+  // ─── SCROLL REVEAL ───
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+
+  // ─── FORM SUBMIT ───
+  document.getElementById('submitBtn').addEventListener('click', function() {
+    const inputs = document.querySelectorAll('.form-card input[type="text"], .form-card input[type="email"], .form-card input[type="tel"]');
+    let allFilled = true;
+    inputs.forEach(i => { if (!i.value.trim()) allFilled = false; });
+
+    if (!allFilled) {
+      this.textContent = '⚠ Please fill in all fields';
+      this.style.background = '#a07030';
+      setTimeout(() => { this.textContent = 'Register My Interest →'; this.style.background = ''; }, 2200);
+      return;
+    }
+    this.textContent = '✓ Request Received — We\'ll be in touch!';
+    this.style.background = '#1a6b3a';
+    this.style.color = '#fff';
+  });
+</script>
+</body>
+</html>

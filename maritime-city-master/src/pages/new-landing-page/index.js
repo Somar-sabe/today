@@ -7,12 +7,14 @@ import { getProducts, productSlug, getDiscountPrice } from "@/lib/product";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
 import Slider from "react-slick";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import FeaturesGrid from "@/components/dubai-market-facts/five";
 import { LayoutOne } from "@/layouts";
 import OasisHero from "@/components/emaa/five";
 import PropertiesForSale from "@/components/emaa/sex";
 import OasisAmenities from "@/components/emaa/seven";
 import Interest from "@/components/intrest/intrest";
-import AltairLanding from "@/components/dubai-market-facts/second";
+import Hero from "@/components/dubai-market-facts/third";
+import ResilienceSection from "@/components/dubai-market-facts/four";
 import ContactForm from "@/components/contactForm/contactForm";
 import featuresData from "@/data/service";
 import LocationSection from "@/components/emaa/eight";
@@ -156,7 +158,9 @@ function MaritimeCity(props) {
 
       <ContactPopup isOpen={openPopup} onClose={() => setOpenPopup(false)} />
 
-<AltairLanding />
+<Hero />
+<ResilienceSection />
+<FeaturesGrid  />
 <ScrollToContact/>
    
 
