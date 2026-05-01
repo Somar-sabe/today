@@ -14,6 +14,8 @@ import PropertiesForSale from "@/components/emaa/sex";
 import OasisAmenities from "@/components/emaa/seven";
 import Interest from "@/components/intrest/intrest";
 import Hero from "@/components/dubai-market-facts/third";
+import PortfolioSection from "@/components/dubai-market-facts/six";
+import AreasCovered from "@/components/dubai-market-facts/seven";
 import ResilienceSection from "@/components/dubai-market-facts/four";
 import ContactForm from "@/components/contactForm/contactForm";
 import featuresData from "@/data/service";
@@ -161,6 +163,8 @@ function MaritimeCity(props) {
 <Hero />
 <ResilienceSection />
 <FeaturesGrid  />
+<PortfolioSection />
+<AreasCovered />
 <ScrollToContact/>
    
 
