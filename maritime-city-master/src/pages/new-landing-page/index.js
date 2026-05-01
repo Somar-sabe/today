@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { getProducts, productSlug, getDiscountPrice } from "@/lib/product";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
 import Slider from "react-slick";
+
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import FeaturesGrid from "@/components/dubai-market-facts/five";
 import { LayoutOne } from "@/layouts";
