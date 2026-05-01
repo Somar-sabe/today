@@ -6,13 +6,20 @@ import React, { useState } from "react";
 import { getProducts, productSlug, getDiscountPrice } from "@/lib/product";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
 import Slider from "react-slick";
+
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import FeaturesGrid from "@/components/dubai-market-facts/five";
 import { LayoutOne } from "@/layouts";
 import OasisHero from "@/components/emaa/five";
 import PropertiesForSale from "@/components/emaa/sex";
 import OasisAmenities from "@/components/emaa/seven";
 import Interest from "@/components/intrest/intrest";
-import DubaiLandingSection from "@/components/dubai-market-facts/first";
+import ContactSection from "@/components/dubai-market-facts/third";
+import PortfolioSection from "@/components/dubai-market-facts/six";
+import AreasCovered from "@/components/dubai-market-facts/seven";
+import ResilienceSection from "@/components/dubai-market-facts/four";
+import TeamSection from "@/components/dubai-market-facts/nine";
+import TestimonialsSection from "@/components/dubai-market-facts/ten";
 import ContactForm from "@/components/contactForm/contactForm";
 import featuresData from "@/data/service";
 import LocationSection from "@/components/emaa/eight";
@@ -156,7 +163,13 @@ function MaritimeCity(props) {
 
       <ContactPopup isOpen={openPopup} onClose={() => setOpenPopup(false)} />
 
-<DubaiLandingSection />
+<ContactSection />
+<ResilienceSection />
+<FeaturesGrid  />
+<PortfolioSection />
+<AreasCovered />
+<TeamSection />
+<TestimonialsSection />
 <ScrollToContact/>
    
 
