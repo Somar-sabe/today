@@ -138,6 +138,7 @@ const PortfolioSection = () => {
         .card {
           border: 1px solid #1f2937;
           padding: 2.5rem;
+          background: #1f2937;
         }
 
         .cardCategory {
