@@ -66,7 +66,6 @@ const ResilienceSection = () => {
 
       </div>
 
-      {/* ✅ RESPONSIVE FIX */}
       <style jsx>{`
         .section {
           background: #0a192f;
@@ -127,12 +126,16 @@ const ResilienceSection = () => {
         .title {
           font-size: 3.5rem;
           font-family: serif;
-          color:white !important;
+          color: white;
         }
 
         .accentItalic {
           font-style: italic;
           color: #c5a358;
+        }
+
+        .description {
+          color: white;
         }
 
         .statsList {
@@ -147,7 +150,19 @@ const ResilienceSection = () => {
           margin-bottom: 1.5rem;
         }
 
-        /* 🔥 MOBILE FIX */
+        /* ✅ NEW FIXED TEXT STYLES */
+        .statTitle {
+          color: white;
+          margin: 0;
+        }
+
+        .statBody {
+          color: white;
+          opacity: 0.8;
+          margin: 0.25rem 0 0;
+        }
+
+        /* 🔥 MOBILE */
         @media (max-width: 768px) {
           .container {
             grid-template-columns: 1fr;
@@ -166,7 +181,6 @@ const ResilienceSection = () => {
 
           .title {
             font-size: 2.2rem;
-            color:white !important;
           }
 
           .quote {
@@ -186,8 +200,8 @@ const StatItem = ({ title, body }) => (
   <div className="statItem">
     <span style={{ color: '#4a90e2' }}>✦</span>
     <div>
-      <h4>{title}</h4>
-      <p>{body}</p>
+      <h4 className="statTitle">{title}</h4>
+      <p className="statBody">{body}</p>
     </div>
   </div>
 );
