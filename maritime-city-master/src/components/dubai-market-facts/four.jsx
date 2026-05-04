@@ -164,7 +164,7 @@ const ResilienceSection = () => {
               Proven in Practice.
             </h2>
             <p style={styles.description}>
-              The 2026 regional conflict reached the UAE's borders. For the first time, Dubai 
+              The 2026 regional conflict reached the UAE borders. For the first time, Dubai 
               faced direct attack. Here is what the data shows — and why experienced 
               investors stayed the course.
             </p>

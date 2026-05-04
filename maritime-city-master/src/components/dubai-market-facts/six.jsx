@@ -172,7 +172,7 @@ const PortfolioSection = () => {
         <div style={styles.headerTitleSide}>
           <div style={styles.badge}>
             <span>★</span>
-            <span>Altair's Portfolio</span>
+            <span>Altair Portfolio</span>
           </div>
           <h2 style={styles.mainTitle}>
             Every Budget.<br />
@@ -180,7 +180,7 @@ const PortfolioSection = () => {
           </h2>
         </div>
         <p style={styles.headerDescription}>
-          Whether you're entering the market for the first time or adding to an established portfolio, Altair's advisors match you to the right property — not just any property. We work across off-plan, secondary, and rental markets.
+          Whether you are entering the market for the first time or adding to an established portfolio, Altairs advisors match you to the right property — not just any property. We work across off-plan, secondary, and rental markets.
         </p>
       </div>
 

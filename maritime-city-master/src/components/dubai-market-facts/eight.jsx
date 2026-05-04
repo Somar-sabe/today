@@ -108,7 +108,7 @@ const AreasCovered = () => {
         </h2>
         
         <p style={styles.description}>
-          Altair's team is active across all of Dubai's key investment zones — from 
+          Altair team is active across all of Dubai key investment zones — from 
           established landmarks to emerging growth corridors.
         </p>
 

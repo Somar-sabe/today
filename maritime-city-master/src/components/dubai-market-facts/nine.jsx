@@ -154,7 +154,7 @@ const TeamSection = () => {
             </h2>
             <p style={styles.description}>
               Our multilingual, multicultural team brings local expertise and global perspective 
-              to every client relationship. From your first enquiry to your title deed — we're 
+              to every client relationship. From your first enquiry to your title deed — we are 
               with you every step of the way.
             </p>
           </div>

@@ -237,8 +237,8 @@ const ContactSection = () => {
             Dubai Properties
           </h2>
           <p style={styles.description}>
-            While global uncertainty reshapes capital flows, Dubai's fundamentals remain unshaken 
-            — and Altair's expert team is here to guide you through every step of your 
+            While global uncertainty reshapes capital flows, Dubai fundamentals remain unshaken 
+            — and Altair expert team is here to guide you through every step of your 
             investment journey.
           </p>
           
@@ -262,7 +262,7 @@ const ContactSection = () => {
         <div style={styles.formCard}>
           <div style={styles.formHeader}>
             <h3 style={styles.formTitle}>Speak With an Altair Advisor</h3>
-            <p style={styles.formSubtitle}>Register your interest and we'll reach out within 24 hours — no obligation, complete discretion.</p>
+            <p style={styles.formSubtitle}>Register your interest and we will reach out within 24 hours — no obligation, complete discretion.</p>
           </div>
 
           <form onSubmit={handleSubmit}>
