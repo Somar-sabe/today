@@ -157,7 +157,7 @@ const ResilienceSection = () => {
           <header style={styles.header}>
             <div style={styles.badge}>
               <span>★</span>
-              <span>Dubai's Resilience Story</span>
+              <span>Dubai Resilience Story</span>
             </div>
             <h2 style={styles.title}>
               Tested Under <span style={styles.accentItalic}>Pressure.</span><br />
