@@ -95,6 +95,7 @@ const ContactSection = () => {
       lineHeight: '1.1',
       fontFamily: 'serif',
       margin: '0',
+      color:'white'
     },
     italicAccent: {
       fontStyle: 'italic',
@@ -105,6 +106,7 @@ const ContactSection = () => {
       fontSize: '1.1rem',
       lineHeight: '1.7',
       maxWidth: '500px',
+      color:'white'
     },
     statsRow: {
       display: 'flex',
