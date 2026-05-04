@@ -200,10 +200,11 @@ const StatItem = ({ title, body }) => (
   <div className="statItem">
     <span style={{ color: '#4a90e2' }}>✦</span>
     <div>
-      <h4 className="statTitle">{title}</h4>
-      <p className="statBody">{body}</p>
+      <h4 style={{ color: '#fff', margin: 0 }}>{title}</h4>
+      <p style={{ color: '#fff', opacity: 0.8, margin: '0.25rem 0 0' }}>
+        {body}
+      </p>
     </div>
   </div>
 );
-
 export default ResilienceSection;
