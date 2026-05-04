@@ -77,7 +77,7 @@ const TestimonialsSection = () => {
       margin: '1.5rem 0 0.25rem 0',
     },
     authorInfo: {
-      color: '#9ca3af',
+      color: 'white',
       fontSize: '0.75rem',
       textTransform: 'capitalize',
       margin: '0',

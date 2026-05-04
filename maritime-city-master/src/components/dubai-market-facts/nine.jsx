@@ -47,7 +47,7 @@ const TeamSection = () => {
       color: '#c5a358',
     },
     description: {
-      color: '#9ca3af',
+      color: 'white',
       fontSize: '1rem',
       lineHeight: '1.7',
       maxWidth: '480px',
@@ -76,7 +76,7 @@ const TeamSection = () => {
     },
     statLabel: {
       fontSize: '12px',
-      color: '#9ca3af',
+      color: 'white',
       textTransform: 'capitalize',
       letterSpacing: '0.05em',
     },

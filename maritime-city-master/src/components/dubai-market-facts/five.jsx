@@ -53,7 +53,7 @@ const FeaturesGrid = () => {
       margin: '0',
     },
     description: {
-      color: '#9ca3af',
+      color: 'white',
       fontSize: '0.9rem',
       lineHeight: '1.6',
       margin: '0',

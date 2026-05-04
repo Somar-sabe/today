@@ -1,145 +1,18 @@
+'use client'
+
 import React from 'react';
 
 const ResilienceSection = () => {
-  const styles = {
-    section: {
-      backgroundColor: '#0a192f',
-      color: '#ffffff',
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '4rem 2rem',
-      fontFamily: 'system-ui, -apple-system, sans-serif',
-    },
-    container: {
-      maxWidth: '1200px',
-      margin: '0 auto',
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-      gap: '4rem',
-      alignItems: 'center',
-    },
-    // Left Column Styles
-    visualColumn: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      gap: '2rem',
-    },
-    circle: {
-      position: 'relative',
-      width: '350px',
-      height: '350px',
-      borderRadius: '50%',
-      border: '1px solid rgba(156, 163, 175, 0.2)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      textAlign: 'center',
-      padding: '2rem',
-    },
-    percentage: {
-      display: 'block',
-      fontSize: '7rem',
-      fontFamily: 'serif',
-      color: '#c5a358',
-      lineHeight: '1',
-    },
-    circleSubtext: {
-      fontSize: '10px',
-      textTransform: 'uppercase',
-      letterSpacing: '0.2em',
-      color: '#9ca3af',
-      marginTop: '0.5rem',
-      lineHeight: '1.6',
-    },
-    quote: {
-      fontStyle: 'italic',
-      fontFamily: 'serif',
-      fontSize: '1.25rem',
-      color: '#d1d5db',
-      textAlign: 'center',
-    },
-    // Right Column Styles
-    contentColumn: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '2rem',
-    },
-    header: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1rem',
-    },
-    badge: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '0.5rem',
-      color: '#c5a358',
-      fontSize: '12px',
-      fontWeight: 'bold',
-      letterSpacing: '0.1em',
-      textTransform: 'uppercase',
-    },
-    title: {
-      fontSize: '3.5rem',
-      fontWeight: '300',
-      lineHeight: '1.1',
-      fontFamily: 'serif',
-      margin: '0',
-    },
-    accentItalic: {
-      fontStyle: 'italic',
-      color: '#c5a358',
-    },
-    description: {
-      color: '#9ca3af',
-      fontSize: '1.125rem',
-      lineHeight: '1.6',
-      maxWidth: '500px',
-    },
-    // Stats List
-    statsList: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '2rem',
-      paddingTop: '1.5rem',
-      borderTop: '1px solid #1f2937',
-    },
-    statItem: {
-      display: 'flex',
-      gap: '1rem',
-    },
-    bullet: {
-      color: '#4a90e2',
-      fontSize: '1.25rem',
-    },
-    statTitle: {
-      fontSize: '0.875rem',
-      fontWeight: 'bold',
-      textTransform: 'uppercase',
-      letterSpacing: '0.05em',
-      margin: '0 0 0.25rem 0',
-    },
-    statBody: {
-      color: '#9ca3af',
-      fontSize: '0.875rem',
-      lineHeight: '1.5',
-      margin: '0',
-    },
-  };
-
   return (
-    <section style={styles.section}>
-      <div style={styles.container}>
+    <section className="section">
+      <div className="container">
         
-        {/* Left Column */}
-        <div style={styles.visualColumn}>
-          <div style={styles.circle}>
+        {/* LEFT */}
+        <div className="visualColumn">
+          <div className="circle">
             <div>
-              <span style={styles.percentage}>96%</span>
-              <p style={styles.circleSubtext}>
+              <span className="percentage">96%</span>
+              <p className="circleSubtext">
                 of Iranian Missile & Drone<br />
                 attacks intercepted by<br />
                 UAE Air Defence — March<br />
@@ -147,64 +20,174 @@ const ResilienceSection = () => {
               </p>
             </div>
           </div>
-          <p style={styles.quote}>
-  &ldquo;Dubai was tested in real time — and it held.&rdquo;
+
+          <p className="quote">
+            &ldquo;Dubai was tested in real time — and it held.&rdquo;
           </p>
         </div>
 
-        {/* Right Column */}
-        <div style={styles.contentColumn}>
-          <header style={styles.header}>
-            <div style={styles.badge}>
-              <span>★</span>
-              <span>Dubai Resilience Story</span>
-            </div>
-            <h2 style={styles.title}>
-              Tested Under <span style={styles.accentItalic}>Pressure.</span><br />
-              Proven in Practice.
-            </h2>
-            <p style={styles.description}>
-              The 2026 regional conflict reached the UAE borders. For the first time, Dubai 
-              faced direct attack. Here is what the data shows — and why experienced 
-              investors stayed the course.
-            </p>
-          </header>
+        {/* RIGHT */}
+        <div className="contentColumn">
+          <div className="badge">
+            <span>★</span>
+            <span>Dubai Resilience Story</span>
+          </div>
 
-          <div style={styles.statsList}>
+          <h2 className="title">
+            Tested Under <span className="accentItalic">Pressure.</span><br />
+            Proven in Practice.
+          </h2>
+
+          <p className="description">
+            The 2026 regional conflict reached the UAE borders. For the first time, Dubai 
+            faced direct attack. Here is what the data shows — and why experienced 
+            investors stayed the course.
+          </p>
+
+          <div className="statsList">
             <StatItem 
               title="96% of Attacks Intercepted" 
-              body="The UAE layered air defence performed at a global benchmark level. Infrastructure remained fully operational throughout." 
-              styles={styles}
+              body="The UAE layered air defence performed at a global benchmark level." 
             />
             <StatItem 
-              title="DIFC Company Registrations: +59% in March 2026" 
-              body="During the peak conflict month, 258 new companies registered at DIFC — up from 162 in March 2025. Investors dont leave Dubai; they consolidate here." 
-              styles={styles}
+              title="DIFC Company Registrations: +59%" 
+              body="Investors don&apos;t leave Dubai; they consolidate here." 
             />
             <StatItem 
-              title="AED 55.18B in January 2026 Transactions" 
-              body="A 43.9% year-on-year surge just weeks before tensions peaked — confirming the markets underlying structural strength." 
-              styles={styles}
+              title="AED 55.18B Transactions" 
+              body="Strong market fundamentals even before peak tension." 
             />
             <StatItem 
-              title="Ceasefire Conditions Accelerating Recovery" 
-              body="With peace talks advancing, Palm Jumeirah, Downtown, and Dubai Hills are seeing the fastest luxury market recovery — exactly where Altair operates." 
-              styles={styles}
+              title="Luxury Recovery Accelerating" 
+              body="Prime areas recovering fastest post-ceasefire." 
             />
           </div>
         </div>
+
       </div>
+
+      {/* ✅ RESPONSIVE FIX */}
+      <style jsx>{`
+        .section {
+          background: #0a192f;
+          color: white;
+          padding: 4rem 2rem;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 4rem;
+          align-items: center;
+        }
+
+        .visualColumn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .circle {
+          width: 350px;
+          height: 350px;
+          border-radius: 50%;
+          border: 1px solid rgba(156,163,175,0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 2rem;
+        }
+
+        .percentage {
+          font-size: 7rem;
+          color: #c5a358;
+          font-family: serif;
+        }
+
+        .circleSubtext {
+          font-size: 10px;
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          color: white;
+        }
+
+        .quote {
+          font-style: italic;
+          font-size: 1.25rem;
+          text-align: center;
+        }
+
+        .title {
+          font-size: 3.5rem;
+          font-family: serif;
+          color:white !important;
+        }
+
+        .accentItalic {
+          font-style: italic;
+          color: #c5a358;
+        }
+
+        .statsList {
+          margin-top: 2rem;
+          border-top: 1px solid #1f2937;
+          padding-top: 1.5rem;
+        }
+
+        .statItem {
+          display: flex;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        /* 🔥 MOBILE FIX */
+        @media (max-width: 768px) {
+          .container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+          }
+
+          .circle {
+            width: 260px;
+            height: 260px;
+            padding: 1.5rem;
+          }
+
+          .percentage {
+            font-size: 4rem;
+          }
+
+          .title {
+            font-size: 2.2rem;
+            color:white !important;
+          }
+
+          .quote {
+            font-size: 1rem;
+          }
+
+          .section {
+            padding: 3rem 1rem;
+          }
+        }
+      `}</style>
     </section>
   );
 };
 
-// Sub-component for clean repetition
-const StatItem = ({ title, body, styles }) => (
-  <div style={styles.statItem}>
-    <span style={styles.bullet}>✦</span>
+const StatItem = ({ title, body }) => (
+  <div className="statItem">
+    <span style={{ color: '#4a90e2' }}>✦</span>
     <div>
-      <h4 style={styles.statTitle}>{title}</h4>
-      <p style={styles.statBody}>{body}</p>
+      <h4>{title}</h4>
+      <p>{body}</p>
     </div>
   </div>
 );

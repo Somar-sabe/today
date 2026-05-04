@@ -145,6 +145,7 @@ const ContactSection = () => {
         .title {
           font-size: 4.5rem;
           font-family: serif;
+          color:white;
         }
 
         .italicAccent {
@@ -208,6 +209,7 @@ const ContactSection = () => {
 
           .title {
             font-size: 2.4rem;
+            color:white;
           }
 
           .statsRow {

@@ -40,7 +40,7 @@ const AreasCovered = () => {
       color: '#c5a358',
     },
     description: {
-      color: '#9ca3af',
+      color: 'white',
       fontSize: '1.1rem',
       lineHeight: '1.6',
       maxWidth: '550px',
@@ -64,7 +64,7 @@ const AreasCovered = () => {
     tagMuted: {
       padding: '0.8rem 1.5rem',
       border: '1px solid rgba(255, 255, 255, 0.1)',
-      color: '#9ca3af',
+      color: 'white',
       fontSize: '0.85rem',
       letterSpacing: '0.02em',
       backgroundColor: 'transparent',
