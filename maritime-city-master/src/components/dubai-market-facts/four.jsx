@@ -148,7 +148,7 @@ const ResilienceSection = () => {
             </div>
           </div>
           <p style={styles.quote}>
-            "Dubai was tested in real time — and it held."
+  &ldquo;Dubai was tested in real time — and it held.&rdquo;
           </p>
         </div>
 
