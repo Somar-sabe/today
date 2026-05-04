@@ -41,6 +41,7 @@ const TeamSection = () => {
       lineHeight: '1.1',
       fontFamily: 'serif',
       margin: '0',
+      color:'white',
     },
     italicAccent: {
       fontStyle: 'italic',

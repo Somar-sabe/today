@@ -34,6 +34,7 @@ const AreasCovered = () => {
       fontFamily: 'serif',
       margin: '0 0 2rem 0',
       maxWidth: '600px',
+      color:'white'
     },
     italicAccent: {
       fontStyle: 'italic',

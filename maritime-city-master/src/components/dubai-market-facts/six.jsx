@@ -113,6 +113,7 @@ const PortfolioSection = () => {
           line-height: 1.1;
           font-family: serif;
           margin: 0;
+          color:white;
         }
 
         .italicAccent {

@@ -51,6 +51,7 @@ const FeaturesGrid = () => {
       fontFamily: 'serif',
       fontWeight: '400',
       margin: '0',
+      color: 'white',
     },
     description: {
       color: 'white',
