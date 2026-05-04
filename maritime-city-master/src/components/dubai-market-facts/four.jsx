@@ -173,17 +173,17 @@ const ResilienceSection = () => {
           <div style={styles.statsList}>
             <StatItem 
               title="96% of Attacks Intercepted" 
-              body="The UAE's layered air defence performed at a global benchmark level. Infrastructure remained fully operational throughout." 
+              body="The UAE layered air defence performed at a global benchmark level. Infrastructure remained fully operational throughout." 
               styles={styles}
             />
             <StatItem 
               title="DIFC Company Registrations: +59% in March 2026" 
-              body="During the peak conflict month, 258 new companies registered at DIFC — up from 162 in March 2025. Investors don't leave Dubai; they consolidate here." 
+              body="During the peak conflict month, 258 new companies registered at DIFC — up from 162 in March 2025. Investors dont leave Dubai; they consolidate here." 
               styles={styles}
             />
             <StatItem 
               title="AED 55.18B in January 2026 Transactions" 
-              body="A 43.9% year-on-year surge just weeks before tensions peaked — confirming the market's underlying structural strength." 
+              body="A 43.9% year-on-year surge just weeks before tensions peaked — confirming the markets underlying structural strength." 
               styles={styles}
             />
             <StatItem 
