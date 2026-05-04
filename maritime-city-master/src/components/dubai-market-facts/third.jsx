@@ -1,21 +1,30 @@
 'use client'
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const ContactSection = () => {
   const router = useRouter();
 
-  // State for functionality
   const [phone, setPhone] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect screen size (safe for Next.js)
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validation
     if (!phone || phone.trim().length < 5) {
       alert("Please enter a valid phone number.");
       return;
@@ -35,22 +44,17 @@ const ContactSection = () => {
     try {
       const response = await fetch("https://api.altairre.ae/api/contacts", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
       if (response.ok) {
         router.push("/Thankyou");
       } else {
-        const errorData = await response.json();
-        console.error("Form submission failed:", errorData);
-        alert("There was an error submitting the form. Please try again.");
+        alert("There was an error submitting the form.");
       }
-    } catch (error) {
-      console.error("Network error:", error);
-      alert("A network error occurred. Please try again later.");
+    } catch {
+      alert("Network error. Try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -60,7 +64,7 @@ const ContactSection = () => {
     section: {
       backgroundColor: '#0a192f',
       color: '#ffffff',
-      padding: '6rem 2rem',
+      padding: isMobile ? '3rem 1rem' : '6rem 2rem',
       fontFamily: 'system-ui, -apple-system, sans-serif',
       minHeight: '100vh',
       display: 'flex',
@@ -70,8 +74,10 @@ const ContactSection = () => {
       maxWidth: '1200px',
       margin: '0 auto',
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
-      gap: '4rem',
+      gridTemplateColumns: isMobile
+        ? '1fr'
+        : 'repeat(auto-fit, minmax(450px, 1fr))',
+      gap: isMobile ? '2rem' : '4rem',
       alignItems: 'center',
     },
     contentSide: {
@@ -90,27 +96,25 @@ const ContactSection = () => {
       textTransform: 'uppercase',
     },
     title: {
-      fontSize: '4.5rem',
+      fontSize: isMobile ? '2.4rem' : '4.5rem',
       fontWeight: '400',
       lineHeight: '1.1',
       fontFamily: 'serif',
       margin: '0',
-      color:'white'
     },
     italicAccent: {
       fontStyle: 'italic',
       color: '#c5a358',
     },
     description: {
-      color: '#9ca3af',
-      fontSize: '1.1rem',
+      fontSize: isMobile ? '1rem' : '1.1rem',
       lineHeight: '1.7',
       maxWidth: '500px',
-      color:'white'
     },
     statsRow: {
       display: 'flex',
-      gap: '3rem',
+      flexDirection: isMobile ? 'column' : 'row',
+      gap: isMobile ? '1.5rem' : '3rem',
       marginTop: '2rem',
     },
     statItem: {
@@ -134,9 +138,7 @@ const ContactSection = () => {
     formCard: {
       backgroundColor: 'rgba(255, 255, 255, 0.02)',
       border: '1px solid #1f2937',
-      padding: '3rem',
-      borderRadius: '2px',
-      position: 'relative',
+      padding: isMobile ? '1.5rem' : '3rem',
     },
     formHeader: {
       marginBottom: '2rem',
@@ -144,7 +146,6 @@ const ContactSection = () => {
     formTitle: {
       fontSize: '2rem',
       fontFamily: 'serif',
-      marginBottom: '0.5rem',
     },
     formSubtitle: {
       fontSize: '0.8rem',
@@ -152,7 +153,7 @@ const ContactSection = () => {
     },
     inputGroupRow: {
       display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
+      gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
       gap: '1rem',
       marginBottom: '1rem',
     },
@@ -175,7 +176,6 @@ const ContactSection = () => {
       color: '#ffffff',
       fontSize: '0.9rem',
       width: '100%',
-      boxSizing: 'border-box',
     },
     submitBtn: {
       backgroundColor: '#c5a358',
@@ -189,15 +189,11 @@ const ContactSection = () => {
       letterSpacing: '0.2em',
       cursor: 'pointer',
       marginTop: '1rem',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: '0.5rem',
       opacity: isSubmitting ? 0.7 : 1,
     },
     actionRow: {
       display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
+      gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
       gap: '1rem',
       marginTop: '1rem',
     },
@@ -210,10 +206,6 @@ const ContactSection = () => {
       textTransform: 'uppercase',
       letterSpacing: '0.1em',
       cursor: 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '0.5rem',
     },
     privacyText: {
       fontSize: '10px',
@@ -226,24 +218,24 @@ const ContactSection = () => {
   return (
     <section style={styles.section}>
       <div style={styles.container}>
-        
-        {/* Left Content Column */}
+
         <div style={styles.contentSide}>
           <div style={styles.badge}>
             <span>★</span>
             <span>Altair Real Estate · Dubai 2026</span>
           </div>
+
           <h2 style={styles.title}>
             Your Gateway to<br />
             <span style={styles.italicAccent}>Exceptional</span><br />
             Dubai Properties
           </h2>
+
           <p style={styles.description}>
             While global uncertainty reshapes capital flows, Dubai fundamentals remain unshaken 
-            — and Altair expert team is here to guide you through every step of your 
-            investment journey.
+            — and Altair expert team is here to guide you through every step.
           </p>
-          
+
           <div style={styles.statsRow}>
             <div style={styles.statItem}>
               <span style={styles.statValue}>AED 917B</span>
@@ -260,84 +252,34 @@ const ContactSection = () => {
           </div>
         </div>
 
-        {/* Right Form Column */}
         <div style={styles.formCard}>
-          <div style={styles.formHeader}>
-            <h3 style={styles.formTitle}>Speak With an Altair Advisor</h3>
-            <p style={styles.formSubtitle}>Register your interest and we will reach out within 24 hours — no obligation, complete discretion.</p>
-          </div>
-
           <form onSubmit={handleSubmit}>
-            <div style={styles.inputGroupRow}>
-              <div style={styles.fieldWrapper}>
-                <label style={styles.label}>First Name</label>
-                <input name="firstName" style={styles.input} type="text" placeholder="First name" required />
-              </div>
-              <div style={styles.fieldWrapper}>
-                <label style={styles.label}>Last Name</label>
-                <input name="lastName" style={styles.input} type="text" placeholder="Last name" required />
-              </div>
-            </div>
-
-            <div style={styles.fieldWrapper}>
-              <label style={styles.label}>Email Address</label>
-              <input name="email" style={styles.input} type="email" placeholder="your@email.com" required />
-            </div>
-
-            <div style={styles.fieldWrapper}>
-              <label style={styles.label}>Phone / WhatsApp</label>
-              <PhoneInput
-                country={'ae'}
-                value={phone}
-                onChange={setPhone}
-                inputStyle={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid #1f2937',
-                    padding: '0.8rem 1rem',
-                    color: '#ffffff',
-                    fontSize: '0.9rem',
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: '0'
-                }}
-                containerStyle={{ width: '100%' }}
-                buttonStyle={{ 
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)', 
-                    border: '1px solid #1f2937',
-                    borderRadius: '0' 
-                }}
-                dropdownStyle={{ color: '#000' }}
-                placeholder="+971 or international"
-              />
-            </div>
 
             <div style={styles.inputGroupRow}>
-              <div style={styles.fieldWrapper}>
-                <label style={styles.label}>Budget</label>
-                <input name="budget" style={styles.input} type="text" placeholder="Select range" />
-              </div>
-              <div style={styles.fieldWrapper}>
-                <label style={styles.label}>Interest</label>
-                <input name="interest" style={styles.input} type="text" placeholder="I'm looking to..." />
-              </div>
+              <input name="firstName" style={styles.input} placeholder="First name" required />
+              <input name="lastName" style={styles.input} placeholder="Last name" required />
             </div>
 
-            <button type="submit" style={styles.submitBtn} disabled={isSubmitting}>
+            <input name="email" style={styles.input} placeholder="Email" required />
+
+            <PhoneInput
+              country={'ae'}
+              value={phone}
+              onChange={setPhone}
+              inputStyle={{
+                width: '100%',
+                paddingLeft: '48px',
+                backgroundColor: 'rgba(255,255,255,0.05)',
+                border: '1px solid #1f2937',
+                color: '#fff'
+              }}
+              containerStyle={{ width: '100%' }}
+            />
+
+            <button type="submit" style={styles.submitBtn}>
               {isSubmitting ? "Submitting..." : "Register My Interest —"}
             </button>
 
-            <div style={styles.actionRow}>
-              <button type="button" style={styles.secondaryBtn} onClick={() => window.open('https://wa.me/YOUR_NUMBER', '_blank')}>
-                <span style={{color: '#25D366'}}>●</span> WhatsApp Us
-              </button>
-              <button type="button" style={styles.secondaryBtn} onClick={() => window.location.href = 'tel:YOUR_NUMBER'}>
-                📞 Call Now
-              </button>
-            </div>
-
-            <p style={styles.privacyText}>
-              🔒 Secure & Confidential. Privacy Policy
-            </p>
           </form>
         </div>
 
