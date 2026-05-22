@@ -509,3 +509,38 @@
 .title{
     color:white;
 }
+/* Update or add these properties to your existing classes */
+
+.heroContentContainer {
+  display: flex;
+  flex-direction: column; /* Stack vertically on mobile by default */
+  gap: 2rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+.heroLeft {
+  width: 100%; /* Take full width on mobile */
+}
+
+.heroRight {
+  width: 100%; /* Take full width on mobile */
+}
+
+/* DESKTOP RESPONSIVE BREAKPOINT */
+@media (min-width: 992px) {
+  .heroContentContainer {
+    flex-direction: row; /* Switch back side-by-side layout on desktop */
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+  }
+
+  .heroLeft {
+    width: 60%; /* Or keep your grid values: grid-column: span 8; */
+  }
+
+  .heroRight {
+    width: 35%; /* Or keep your grid values: grid-column: span 4; */
+  }
+}
