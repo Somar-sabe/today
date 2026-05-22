@@ -85,6 +85,7 @@ const ContactSection = () => {
         }
 
         .title {
+        color: white;
           font-size: 4.2rem;
           font-family: serif;
           line-height: 1.1;
