@@ -5,13 +5,15 @@ import styles from './RawDistrict.module.css';
 // Adjust the "../" steps depending on how deep your current component file is buried
 // The "@" alias automatically starts searching from your project's "src" folder
 import originalImage from '@/assets/images/original.webp';
+import rawImage from '@/assets/images/Rawdis.jpg';
+
 import Lead from '../contactnew/LeadFormCard';
 // Master Inventory Data Structure matching the design configurations
 const UNIT_DATA = {
   studio: { name: 'Studio Loft', price: 649000, size: '380 sq.ft', image: originalImage.src },
-  oneSuite: { name: '1-Bed Suite', price: 889000, size: '610 sq.ft', image: originalImage.src },
+  oneSuite: { name: '1-Bed Suite', price: 889000, size: '610 sq.ft', image: rawImage.src },
   oneBed: { name: '1-Bedroom Residence', price: 1000000, size: '720 sq.ft', image: originalImage.src },
-  twoBed: { name: '2-Bedroom Suite', price: 1400000, size: '1,054 sq.ft', image: originalImage.src },
+  twoBed: { name: '2-Bedroom Suite', price: 1400000, size: '1,054 sq.ft', image: rawImage.src },
   office: { name: 'Premium Office Space', price: 1200000, size: '700 sq.ft', image: originalImage.src }
 };
 
@@ -78,7 +80,7 @@ export default function RawDistrict() {
         {/* HERO SECTION */}
         <section className={styles.heroSection}>
           <div className={styles.heroBgContainer}>
-            <img src={originalImage.src} alt="RAW District Aerial" className={styles.heroImage} />
+            <img src={rawImage.src} alt="RAW District Aerial" className={styles.heroImage} />
             <div className={styles.heroGradientOverlay}></div>
           </div>
 
