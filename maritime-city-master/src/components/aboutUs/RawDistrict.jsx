@@ -93,7 +93,7 @@ export default function RawDistrict() {
                 <span className={styles.goldFontWeight}>by Imtiaz</span>
               </h1>
               <p className={styles.heroDescription}>
-                An architectural declaration at the convergence corridor of Dubai's future. Fully furnished with custom joinery, integrated appliances, and a direct sky-bridge to the Dubai Metro.
+                An architectural declaration at the convergence corridor of Dubai future. Fully furnished with custom joinery, integrated appliances, and a direct sky-bridge to the Dubai Metro.
               </p>
               
               <div className={styles.heroMetricsGrid}>
@@ -144,7 +144,7 @@ export default function RawDistrict() {
                 <span className={styles.mutedTitleText}>We Are Never Finished.</span>
               </h2>
               <p className={styles.sectionDescription}>
-                "The building is the least interesting thing about us. Most places want you to fit in, we want to know what you're building to stand out." RAW District is custom-built from the culture of the place it lands in.
+                The building is the least interesting thing about us. Most places want you to fit in, we want to know what you are building to stand out. RAW District is custom-built from the culture of the place it lands in.
               </p>
               
               <div className={styles.featuresGrid}>
