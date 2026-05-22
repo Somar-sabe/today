@@ -1,8 +1,8 @@
-
 import path from "path";
 import fs from "fs/promises";
 import { useSelector } from "react-redux";
-import React, { useState } from "react";
+// 1. Imported useRef from React
+import React, { useState, useRef } from "react";
 import { getProducts, productSlug, getDiscountPrice } from "@/lib/product";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
 import Slider from "react-slick";
@@ -12,14 +12,7 @@ import FeaturesGrid from "@/components/dubai-market-facts/five";
 import { LayoutOne } from "@/layouts";
 import OasisHero from "@/components/emaa/five";
 import PropertiesForSale from "@/components/emaa/sex";
-import OasisAmenities from "@/components/emaa/seven";
 import Interest from "@/components/intrest/intrest";
-import ContactSection from "@/components/dubai-market-facts/third";
-import PortfolioSection from "@/components/dubai-market-facts/six";
-import AreasCovered from "@/components/dubai-market-facts/seven";
-import ResilienceSection from "@/components/dubai-market-facts/four";
-import TeamSection from "@/components/dubai-market-facts/nine";
-import TestimonialsSection from "@/components/dubai-market-facts/ten";
 import ContactForm from "@/components/contactForm/contactForm";
 import featuresData from "@/data/service";
 import LocationSection from "@/components/emaa/eight";
@@ -32,12 +25,23 @@ import EmaarOasisSection from "@/components/emaa/eleven";
 import ContactPopup from "../../components/ContactPopup";
 import Lead from "@/components/contactnew/LeadFormCard";
 import RawDistrict from "@/components/aboutUs/RawDistrict";
+
 function MaritimeCity(props) {
   const [openPopup, setOpenPopup] = useState(false);
   const { products } = useSelector((state) => state.product);
   const featuredProducts = getProducts(products, "buying", "featured", 5);
   const featureData = getProducts(featuresData, "buying", "featured", 3);
   const { Herodata } = props;
+
+  // 2. Created a reference target for the form section
+  const contactFormRef = useRef(null);
+
+  // 3. Smooth scroll handler execution function
+  const scrollToForm = () => {
+    if (contactFormRef.current) {
+      contactFormRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
     <button
@@ -153,37 +157,37 @@ function MaritimeCity(props) {
     ],
   };
 
-
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
   const { compareItems } = useSelector((state) => state.compare);
 
   return (
     <>
-     <ContactPopup isOpen={openPopup} onClose={() => setOpenPopup(false)} />
+      <ContactPopup isOpen={openPopup} onClose={() => setOpenPopup(false)} />
       <LayoutOne topbar={true}>
 
+        <RawDistrict />
 
-<RawDistrict />
-
-<ScrollToContact onOpenPopup={() => setOpenPopup(true)} />
+        {/* 4. Swapped out the pop-up trigger prop for our scroll function */}
+        <ScrollToContact onOpenPopup={scrollToForm} />
    
-
         <style jsx>{`
-  .responsive-container {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-  }
+          .responsive-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+          }
 
-  @media (max-width: 768px) {
-    .responsive-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-`}</style>
-   <div className="responsive-container som">
+          @media (max-width: 768px) {
+            .responsive-container {
+              flex-direction: column;
+              align-items: center;
+            }
+          }
+        `}</style>
+        
+        {/* 5. Added the ref hook here to catch the scroll focus */}
+        <div ref={contactFormRef} className="responsive-container som">
           <Interest />
           <Lead />
         </div>

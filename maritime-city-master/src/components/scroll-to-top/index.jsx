@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-// 1. Change the prop argument to match your page file (onOpenPopup)
-const ScrollToContact = ({ onOpenPopup }) => {
+const ScrollToContact = () => { // Removed prop reliance entirely
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -17,6 +16,27 @@ const ScrollToContact = ({ onOpenPopup }) => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
+  const handleScrollClick = () => {
+    // 1. Try finding your form section container directly via ID
+    let target = document.getElementById("contact-section-target");
+    
+    // 2. Fallback: Try looking for the container class name if ID isn't ready
+    if (!target) {
+      target = document.querySelector(".responsive-container");
+    }
+
+    // 3. Fire the native smooth window roll down
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      // 4. Absolute ultimate escape hatch: Just roll to the bottom of the page
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
   if (!isVisible) return null;
 
   return (
@@ -24,7 +44,7 @@ const ScrollToContact = ({ onOpenPopup }) => {
       <button
         id="scrollUp"
         className="register-btn"
-        onClick={onOpenPopup} /* 2. Execute the matched prop function directly here */
+        onClick={handleScrollClick}
       >
         Register
       </button>
