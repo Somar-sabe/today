@@ -160,14 +160,13 @@ function MaritimeCity(props) {
 
   return (
     <>
+     <ContactPopup isOpen={openPopup} onClose={() => setOpenPopup(false)} />
       <LayoutOne topbar={true}>
-
-      <ContactPopup isOpen={openPopup} onClose={() => setOpenPopup(false)} />
 
 
 <RawDistrict />
 
-<ScrollToContact/>
+<ScrollToContact onOpenPopup={() => setOpenPopup(true)} />
    
 
         <style jsx>{`

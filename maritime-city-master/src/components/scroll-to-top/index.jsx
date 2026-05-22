@@ -1,19 +1,12 @@
 import { useEffect, useState } from "react";
-import { FaAngleUp } from "react-icons/fa";
 
-const ScrollToContact = () => {
+// 1. Change the prop argument to match your page file (onOpenPopup)
+const ScrollToContact = ({ onOpenPopup }) => {
   const [isVisible, setIsVisible] = useState(false);
-
-  const scrollToContactForm = () => {
-    const contactSection = document.getElementById("contact-form");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {  // After scrolling 300px
+      if (window.scrollY > 300) { 
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -24,54 +17,41 @@ const ScrollToContact = () => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
+  if (!isVisible) return null;
+
   return (
     <>
       <button
-      style={{color:"black"}}
         id="scrollUp"
-        className={`scroll-top register-btn ${isVisible ? "active" : ""}`}
-        onClick={scrollToContactForm}
+        className="register-btn"
+        onClick={onOpenPopup} /* 2. Execute the matched prop function directly here */
       >
         Register
       </button>
 
       <style jsx>{`
         #scrollUp {
-          visibility: hidden;
           position: fixed;
           height: 45px;
           right: 50px;
-          max-width:fit-content;
-          left:auto;
           bottom: 27px;
-          color: #fff;
+          background-color: #b59410; 
+          color: #000000; 
+          font-weight: 600;
           font-size: 16px;
           text-align: center;
           border-radius: 6px;
-          line-height: 45px;
-        
+          padding: 0 24px;
           border: none;
           cursor: pointer;
-          z-index: 1000;
-          transition: visibility 0.3s ease, background-color 0.3s ease, opacity 0.5s ease;
+          z-index: 99999; 
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+          transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        #scrollUp.active {
-          visibility: visible;
-        }
-
-        .register-btn {
-          padding: 12px 24px;
-          font-size: 16px;
-          color: white;
-          border: none;
-          border-radius: 6px;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-        }
-
-        .register-btn:hover {
-          background-color: #0056b3;
+        #scrollUp:hover {
+          background-color: #d4b22f; 
+          transform: translateY(-2px);
         }
       `}</style>
     </>
