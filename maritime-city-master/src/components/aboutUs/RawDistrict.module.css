@@ -333,7 +333,7 @@
 .bentoCard:hover .bentoHoverText { opacity: 1; transform: translateY(0); }
 
 /* INVENTORY SCROLL MATRIX */
-.inventorySection { padding: 6rem 0; background-color: #050505; overflow: hidden; }
+.inventorySection {background-color: #050505; overflow: hidden; }
 .inventoryHeader { margin-bottom: 3rem; gap: 1rem; }
 .scrollNotice { font-size: 0.875rem; color: #86868B; font-weight: 300; margin: 0; }
 
