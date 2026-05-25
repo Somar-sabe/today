@@ -221,48 +221,7 @@ export default function RawDistrict() {
           </div>
         </section>
 
-        {/* INVENTORY HORIZONTAL SCROLL MATRIX */}
-        <section id="pricing-matrix" className={styles.inventorySection}>
-          <div className={styles.containerMax}>
-            <div className={`${styles.revealBlur} ${styles.inventoryHeader} ${styles.flexRowBetween}`} ref={addToReveals}>
-              <div>
-                <span className={styles.sectionSubtitle}>Secure Development Matrix</span>
-                <h2 className={styles.sectionTitle}>Inventory</h2>
-              </div>
-              <p className={styles.scrollNotice}>Direct developer pricing. No agency premium fees. Scroll to explore →</p>
-            </div>
-
-            <div className={`${styles.revealBlur} ${styles.scrollSnapX} ${styles.delay200}`} ref={addToReveals}>
-              {Object.keys(UNIT_DATA).map((key) => {
-                const item = UNIT_DATA[key];
-                return (
-                  <div 
-                    key={key} 
-                    onClick={() => setSelectedUnit(key)}
-                    className={`${styles.inventoryCard} ${selectedUnit === key ? styles.activeInventoryCard : ''}`}
-                  >
-                    <div className={styles.inventoryImgWrapper}>
-                      <img src={item.image} alt={item.name} className={styles.inventoryCardImg} />
-                    </div>
-                    <div className={styles.inventoryCardContent}>
-                      <div className={styles.inventoryCardMeta}>
-                        <span className={styles.unitSizeFont}>{item.size}</span>
-                        <span className={styles.shortcutIndicator}>↗</span>
-                      </div>
-                      <h3 className={styles.inventoryCardTitle}>{item.name}</h3>
-                      <div className={styles.inventoryCardFooter}>
-                        <span className={styles.inventoryCardPrice}>{formatCurrency(item.price)}</span>
-                        <span className={styles.startingPriceSub}>Starting Price</span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* INTERACTIVE FINANCIAL SIMULATOR */}
+            {/* INTERACTIVE FINANCIAL SIMULATOR */}
         <section id="calculator" className={styles.calculatorSection}>
           <div className={styles.radialBlurBg}></div>
           <div className={styles.containerMaxRelative}>
