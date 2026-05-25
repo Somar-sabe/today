@@ -185,7 +185,7 @@
 }
 
 /* PHILOSOPHY SECTION */
-.philosophySection { padding: 6rem 0; background-color: #050505; }
+.philosophySection {  background-color: #050505; }
 .philosophyGrid {
   width: 100%;
   max-w: 80rem;
@@ -271,7 +271,7 @@
 .featureDescription { font-size: 0.75rem; color: #86868B; margin-top: 0.25rem; font-weight: 300; }
 
 /* AMENITIES BENTO GRID */
-.amenitiesSection { padding: 6rem 0; background-color: #0A0A0A; }
+.amenitiesSection {  background-color: #0A0A0A; }
 .textCenterBlock { text-align: center; max-w: 36rem; margin: 0 auto 4rem auto; display: flex; flex-direction: column; gap: 1rem; }
 .sectionTitleCenter { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.02em; margin: 0;color:white; }
 .bentoHeaderDesc { font-size: 0.875rem; color: #86868B; font-weight: 300; margin: 0; }
@@ -377,7 +377,7 @@
 .startingPriceSub { font-size: 0.625rem; color: #86868B; display: block; margin-top: 0.25rem; }
 
 /* INTERACTIVE CALCULATOR MODELER */
-.calculatorSection { padding: 6rem 0; background-color: #0A0A0A; position: relative; overflow: hidden; }
+.calculatorSection {  background-color: #0A0A0A; position: relative; overflow: hidden; }
 .radialBlurBg {
   position: absolute;
   top: 0;
