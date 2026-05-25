@@ -64,9 +64,9 @@
 /* HERO SECTION CSS */
 .heroSection {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   overflow: hidden;
 }
 .heroBgContainer { position: absolute; inset: 0; }
@@ -542,5 +542,11 @@
 
   .heroRight {
     width: 35%; /* Or keep your grid values: grid-column: span 4; */
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroSection {
+    align-items: flex-end; /* Snap back to bottom alignment on desktop view */
   }
 }
