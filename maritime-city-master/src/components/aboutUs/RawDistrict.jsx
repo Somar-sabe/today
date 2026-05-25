@@ -254,16 +254,7 @@ export default function RawDistrict() {
                     <label htmlFor="calc-down-slider" className={styles.inputFieldLabel}>02. Downpayment</label>
                     <span className={styles.sliderPercentageDisplay}>{downPaymentPct}%</span>
                   </div>
-                  <input 
-                    id="calc-down-slider" 
-                    type="range" 
-                    min="20" 
-                    max="50" 
-                    value={downPaymentPct} 
-                    step="5" 
-                    onChange={(e) => setDownPaymentPct(parseInt(e.target.value))}
-                    className={styles.customRangeSlider}
-                  />
+
                   <div className={styles.sliderLimitsRow}>
                     <span>20% Min</span>
                     <span>50% Max</span>
