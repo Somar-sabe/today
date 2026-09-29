@@ -93,19 +93,30 @@ const ContactFormModal = ({
     []
   )
 
-  useEffect(() => {
-    if (!isOpen) return
-    setStep(1)
-    setLookingFor('')
-    setPropertyType('')
-    setStage('')
-    setAreas([])
-    setBudget('')
-    setPhone('')
-    setCommunication('Email')
-    setRandomNum1(Math.floor(Math.random() * 10) + 1)
-    setRandomNum2(Math.floor(Math.random() * 10) + 1)
-  }, [isOpen])
+useEffect(() => {
+  if (!isOpen) {
+    document.body.style.overflow = ''
+    return
+  }
+
+  // Prevent background page from scrolling
+  document.body.style.overflow = 'hidden'
+
+  setStep(1)
+  setLookingFor('')
+  setPropertyType('')
+  setStage('')
+  setAreas([])
+  setBudget('')
+  setPhone('')
+  setCommunication('Email')
+  setRandomNum1(Math.floor(Math.random() * 10) + 1)
+  setRandomNum2(Math.floor(Math.random() * 10) + 1)
+
+  return () => {
+    document.body.style.overflow = ''
+  }
+}, [isOpen])
 
   const close = () => {
     if (submitting) return
