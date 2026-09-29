@@ -6,6 +6,19 @@ import styles from './ProjectsList.module.css'; // Ensure this CSS module exists
 import { ShieldCheck, TrendingUp, CalendarClock } from "lucide-react";
 import ContactFormModal from '../contactModule/contactFormModule';
 // ✅ FX + formatting helpers
+const cleanImageUrl = (value) => {
+  if (!value) return "";
+
+  const str = String(value).trim();
+
+  // Converts:
+  // [https://example.com/image.webp](https://example.com/image.webp)
+  // into:
+  // https://example.com/image.webp
+  const match = str.match(/^\[.*?\]\((.*?)\)$/);
+
+  return match ? match[1] : str;
+};
 const formatMoney = (amount, currency) =>
   new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -972,30 +985,7 @@ if (budget && priceAed) {
   }, [searchTerm, budget, selectedBeds, handover, currency]);
 
   const visibleProjects = filteredProjects.slice(0, visibleCount);
-
   const canLoadMore = visibleCount < filteredProjects.length;
-
-
-  // -------------------------
-  // USE IN JSX
-  // -------------------------
-
-  /*
-  Search input props:
-
-  onFocus={() => setSearchOpen(true)}
-  onBlur={() => setTimeout(() => setSearchOpen(false), 120)}
-
-  Suggestions:
-
-  {searchOpen && suggestions.map(s => (
-      <div onClick={()=>{setSearchTerm(s); setSearchOpen(false)}}>
-        {s}
-      </div>
-  ))}
-  */
-
-
 
  return (
   <section className={styles.projectsSection}>
@@ -1207,14 +1197,14 @@ if (budget && priceAed) {
             <article className={styles.card}>
       <div className={styles.media}>
 <Image
-  src={project.image}
+  src={cleanImageUrl(project.image)}
   alt={project.title}
   fill
   className={styles.image}
   sizes="(max-width: 768px) 90vw, (max-width: 1200px) 33vw, 377px"
   priority={project.id === "1"}
   fetchPriority={project.id === "1" ? "high" : "auto"}
-  unoptimized={typeof project.image === "string" && project.image.includes("new-projects-media.propertyfinder.com")}
+  unoptimized={cleanImageUrl(project.image).startsWith("http")}
 />
 
   {/* Top badges */}
