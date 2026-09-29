@@ -162,7 +162,7 @@ export const projects = [
     image: "/dano.webp",
     simage: "/dana.webp",
     timage: "/daona.webp",
-    developerLogo:"/OIP.jfif",
+    developerLogo:"/danublogo.png",
     bedrooms: "Office Units (Commercial)",
     price: "AED 1.9M (from)",
     delivery: "2029",
@@ -589,7 +589,7 @@ developerLogo: "/new-sobha-logo-black.png.png",
     timage:
       "/bayzzz.webp",
 
-    developerLogo:"/OIP.jfif",
+    developerLogo:"/danublogo.png",
     bedrooms: "1Bed - 3 Beds",
     price: "2,400,000 AED (from)",
     delivery: "Q4 2029",
