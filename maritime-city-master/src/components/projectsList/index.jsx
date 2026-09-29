@@ -1196,15 +1196,10 @@ if (budget && priceAed) {
           <Link key={project.id} href={project.href} passHref className={styles.cardLink}>
             <article className={styles.card}>
       <div className={styles.media}>
-<Image
+<img
   src={cleanImageUrl(project.image)}
   alt={project.title}
-  fill
   className={styles.image}
-  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 33vw, 377px"
-  priority={project.id === "1"}
-  fetchPriority={project.id === "1" ? "high" : "auto"}
-  unoptimized={cleanImageUrl(project.image).startsWith("http")}
 />
 
   {/* Top badges */}
