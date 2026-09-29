@@ -1216,14 +1216,14 @@ if (budget && priceAed) {
   {/* Developer logo */}
   {project.developerLogo ? (
     <div className={styles.devBadge}>
-     <Image
-  src={project.developerLogo}
+<Image
+  src={cleanImageUrl(project.developerLogo)}
   alt="Developer"
   width={165}
   height={22}
   className={styles.devLogo}
   sizes="165px"
-  unoptimized={typeof project.developerLogo === "string" && project.developerLogo.includes("new-projects-media.propertyfinder.com")}
+  unoptimized={cleanImageUrl(project.developerLogo).startsWith("http")}
 />
     </div>
   ) : null}
