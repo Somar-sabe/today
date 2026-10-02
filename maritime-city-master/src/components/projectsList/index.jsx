@@ -652,7 +652,7 @@ developerLogo: "/new-sobha-logo-black.png",
     price: "1,200,000 AED (from)",
     delivery: "TBA",
     salesStart: "5 Feb 2026 – 2:00 PM",
-    href: "/projects/binghatti-sky-flam",
+    href: "/projects/binghatti-sky-flame",
 
     describ:
       "EOI bookings now live with AED 20,000 reservation and a flexible 70:30 payment plan.",
