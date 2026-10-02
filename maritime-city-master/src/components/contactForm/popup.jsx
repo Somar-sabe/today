@@ -32,8 +32,19 @@ const ContactForm = () => {
       ContactType: "https://promotion.altairre.ae/maritime-city-ar",
     };
 
+   try {
+  const response = await fetch("https://api.altairre.ae/api/contacts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    // Send a copy of the lead to worksgt@gmail.com
     try {
-      const response = await fetch("https://api.altairre.ae/api/contacts", {
+      const emailResponse = await fetch("/api/send-lead-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,20 +52,26 @@ const ContactForm = () => {
         body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
-        setOpen(false);
-
-        // ✅ REDIRECT TO Thankyou PAGE
-        router.push("/Thankyou");
-        return;
+      if (!emailResponse.ok) {
+        console.error("Failed to send lead email copy");
       }
-
-      alert("There was an error submitting the form. Please try again.");
-    } catch (error) {
-      alert("A network error occurred. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
+    } catch (emailError) {
+      console.error("Lead email copy error:", emailError);
     }
+
+    setOpen(false);
+
+    // REDIRECT TO Thankyou PAGE
+    router.push("/Thankyou");
+    return;
+  }
+
+  alert("There was an error submitting the form. Please try again.");
+} catch (error) {
+  alert("A network error occurred. Please try again later.");
+} finally {
+  setIsSubmitting(false);
+}
   };
   return (
     <>
