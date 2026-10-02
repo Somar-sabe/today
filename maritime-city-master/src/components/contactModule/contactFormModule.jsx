@@ -240,19 +240,39 @@ useEffect(() => {
         return
       }
 
-      toast.success('Form sent!')
-      if (typeof onSuccess === 'function') onSuccess()
+     // Send a copy of the lead to worksgt@gmail.com
+try {
+  const emailResponse = await fetch('/api/send-lead-email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(finalPayload),
+  })
 
-      // ✅ mark as submitted so popup never shows again
-      try { localStorage.setItem('lead_submitted', '1') } catch {}
+  if (!emailResponse.ok) {
+    console.error('Failed to send lead email copy')
+  }
+} catch (emailError) {
+  console.error('Lead email copy error:', emailError)
+}
 
-      close()
-      form.reset()
-      setPhone('')
+toast.success('Form sent!')
 
-      // ✅ Redirect to Thankyou page
-      router.push(`/Thankyou?from=${encodeURIComponent(ContactType)}`)
-    } catch {
+if (typeof onSuccess === 'function') onSuccess()
+
+// Mark as submitted so popup never shows again
+try {
+  localStorage.setItem('lead_submitted', '1')
+} catch {}
+
+close()
+form.reset()
+setPhone('')
+
+// Redirect to Thankyou page
+router.push(`/Thankyou?from=${encodeURIComponent(ContactType)}`)
+   } catch {
       toast.error('Network error. Please try again.')
     } finally {
       setSubmitting(false)
